@@ -1,61 +1,71 @@
+# Projectile.gd
 extends CharacterBody2D
 
-# Sinal que será emitido quando o jogador coletar o projétil.
 signal collected
 
-# Enum para controlar o estado do projétil.
-enum State_enum { MOVING, IDLE , RETURNING}
+enum State_enum { MOVING, IDLE, RETURNING }
 
-# --- EXPORTS E VARIÁVEIS ---
-@export var speed: float = 700.0
-@export var max_bounces: int = 3 # Quantas vezes pode ricochetear antes de parar.
+# --- PARÂMETROS DE FÍSICA (NOVOS) ---
+# Atrito constante (resistência do ar). Reduz a velocidade em X pixels/segundo.
+@export var linear_drag: float = 80.0 
+# Fator de perda de velocidade ao colidir (0.0 = para totalmente, 1.0 = sem perda).
+@export var bounce_friction_factor: float = 0.8 
+# Velocidade mínima para o projétil parar e se tornar coletável.
+@export var min_speed_to_stop: float = 30.0
+var speed = 600
+# --- REFERÊNCIAS E VARIÁVEIS ---
 @onready var collectible_area: Area2D = $Area2D
 
-var player: Player
-var _bounces_left: int
 var _current_state: State_enum = State_enum.MOVING
 
 func _ready() -> void:
-	_bounces_left = max_bounces
-	print("projectile criado")
-	# O projétil deve poder ser detectado por um Area2D do jogador quando estiver parado.
-	# Para isso, vamos adicioná-lo ao grupo "collectible".
 	add_to_group("collectible")
 	collectible_area.monitoring = false
 
 func _physics_process(delta: float) -> void:
-	# Só processa o movimento se estiver no estado MOVING.
-	
-	if _current_state == State_enum.RETURNING:
-		pass
-	if _current_state == State_enum.MOVING:
-		move_and_bounce(delta)
+	match _current_state:
+		State_enum.MOVING:
+			_process_movement_and_collision(delta)
+		State_enum.RETURNING:
+			# Lógica de retorno (se houver) entraria aqui.
+			pass
+		State_enum.IDLE:
+			# Não faz nada quando está parado.
+			pass
 
-func move_and_bounce(delta: float) -> void:
+# Função principal que agora lida com toda a lógica de movimento e física.
+func _process_movement_and_collision(delta: float) -> void:
+	# 1. Aplica o atrito linear (resistência do ar)
+	# move_toward é perfeito para reduzir a velocidade de forma constante e frame-independente.
+	velocity = velocity.move_toward(Vector2.ZERO, linear_drag * delta)
+	
+	# 2. Verifica se a velocidade caiu abaixo do nosso limite para parar.
+	if velocity.length() < min_speed_to_stop:
+		_change_state_to_idle()
+		return # Para a execução desta função para não mover o projétil neste frame.
+		
+	# 3. Move o corpo e verifica se houve colisão.
 	var collision_info: KinematicCollision2D = move_and_collide(velocity * delta)
 	
 	if collision_info:
-		# Reflete a velocidade para criar o ricochete.
+		# 4. Se colidiu, reflete a direção e aplica o atrito de colisão.
 		velocity = velocity.bounce(collision_info.get_normal())
-		_bounces_left -= 1
-		
-		# Se os ricochetes acabaram, muda o estado para IDLE.
-		if _bounces_left < 0:
-			_change_state_to_idle()
+		velocity *= bounce_friction_factor # Reduz a magnitude (velocidade) após o ricochete.
 
-# Função que transiciona o projétil para o estado parado/coletável.
+# (NOVA FUNÇÃO) Impulsiona o projétil com um vetor de força.
+func boost_projectile(force_vector: Vector2) -> void:
+	# Apenas impulsiona se o projétil estiver em movimento.
+	if _current_state == State_enum.MOVING:
+		velocity += force_vector
+
+# (FUNÇÃO ALTERADA) A transição para IDLE permanece a mesma.
 func _change_state_to_idle() -> void:
 	_current_state = State_enum.IDLE
-	velocity = Vector2.ZERO # Para o movimento completamente.
-	
-	# Desativa a máscara de colisão para que ele não interaja mais com paredes/inimigos.
-	# Isso evita que ele fique preso ou seja empurrado após parar.
-	set_collision_mask_value(1, false) # Desativa colisão com layer 1 (paredes)
-	# Se tiver uma layer para inimigos, desative-a também:
-	# set_collision_mask_value(NUMERO_DA_LAYER_INIMIGO, false)
+	velocity = Vector2.ZERO
+	set_collision_mask_value(1, false)
 	collectible_area.monitoring = true
 
-# Esta função será chamada pelo Player quando ele coletar o projétil.
+# (FUNÇÃO INALTERADA) A coleta permanece a mesma.
 func collect() -> void:
-	emit_signal("collected") # Emite o sinal para o Player saber que foi coletado.
-	queue_free() # Destrói o projétil.
+	emit_signal("collected")
+	queue_free()
