@@ -57,6 +57,7 @@ horda={
 2d_physics/layer_5="House"
 2d_physics/layer_6="Collectables"
 2d_physics/layer_7="Player_hurtbox"
+2d_physics/layer_8="Rat Door"
 
 [rendering]
 

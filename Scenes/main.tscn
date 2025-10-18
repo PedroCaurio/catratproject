@@ -6,53 +6,64 @@
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
-size = Vector2(1863, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
 size = Vector2(131, 531.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(228, 40)
+size = Vector2(667.001, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(1173, 20)
 
 [node name="Main" type="WorldEnvironment"]
 environment = SubResource("Environment_0xm2m")
 script = ExtResource("1_jjgbg")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(281, 133)
-shape = SubResource("RectangleShape2D_8gbba")
+position = Vector2(4, 213)
+rotation = -1.57092
+collision_layer = 128
+collision_mask = 128
 
 [node name="TextureRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -470.0
-offset_top = 133.0
-offset_right = 1014.0
-offset_bottom = 497.0
-color = Color(0.190762, 0.190762, 0.190762, 1)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(438.5, 497)
-shape = SubResource("RectangleShape2D_8gbba")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-740, 310)
-shape = SubResource("RectangleShape2D_jjvhh")
+offset_left = -440.999
+offset_top = -7.05438
+offset_right = 1043.0
+offset_bottom = 356.946
+scale = Vector2(0.443676, 3.20238)
+color = Color(0.0350018, 0.244818, 2.40654e-08, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1257, 286)
+position = Vector2(175.933, 546.022)
 shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-579, 107)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-108.998, -15.0134)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-595, 502)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-115.144, 1167.99)
 shape = SubResource("RectangleShape2D_kry3j")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(212.929, 572.526)
+rotation = 1.57092
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-440.071, 572.946)
+rotation = -1.57109
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8gbba")
+
 [node name="World" type="Node2D" parent="."]
+position = Vector2(4, 213)
+rotation = -1.57092
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World"]
 
@@ -63,22 +74,31 @@ shape = SubResource("RectangleShape2D_kry3j")
 [node name="Spawns" type="Node2D" parent="World"]
 
 [node name="enemy_spawn" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-579, 249)
+position = Vector2(156.017, -133.981)
 
 [node name="enemy_spawn2" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-569, 404)
+position = Vector2(-220.173, 1398.97)
 
 [node name="enemy_spawn3" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-583, 339)
+position = Vector2(44.8284, 1392.01)
 
 [node name="enemy_spawn4" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-559, 174)
+position = Vector2(-253.987, -107.031)
 
 [node name="House" parent="World" instance=ExtResource("2_bo1nx")]
-position = Vector2(1240, 311)
+position = Vector2(176.93, 569.022)
 
 [node name="Player" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(369, 304)
+position = Vector2(373, 517)
+rotation = 0.088081
 
 [node name="Casa" type="Marker2D" parent="."]
-position = Vector2(1083, 320)
+position = Vector2(572, 210)
+rotation = -1.57092
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(577, 324)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.0
