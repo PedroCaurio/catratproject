@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://by4tv7qv257fe"]
+
+[ext_resource type="Script" uid="uid://b52umji6mlc8m" path="res://Scripts/UI/ui.gd" id="1_de23q"]
+[ext_resource type="Texture2D" uid="uid://nhplxluysi45" path="res://icon.svg" id="2_c7mb3"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_de23q")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Ammo1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_c7mb3")
+
+[node name="Ammo2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Ammo3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2

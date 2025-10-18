@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bib76k5xchi8r"]
+
+[ext_resource type="Script" uid="uid://cdm2o56f8331u" path="res://Scripts/Enviroment/house.gd" id="1_e1h3r"]
+[ext_resource type="Texture2D" uid="uid://nhplxluysi45" path="res://icon.svg" id="1_mguac"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1h3r"]
+size = Vector2(268.5, 269)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rehl7"]
+size = Vector2(83, 346.5)
+
+[node name="House" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_e1h3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 4)
+scale = Vector2(2.42969, 2.42969)
+texture = ExtResource("1_mguac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 3.5)
+shape = SubResource("RectangleShape2D_e1h3r")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-179.5, -1.25)
+shape = SubResource("RectangleShape2D_rehl7")
+
+[node name="Vida" type="Label" parent="."]
+offset_left = -73.0
+offset_top = -211.0
+offset_right = 87.0
+offset_bottom = -158.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

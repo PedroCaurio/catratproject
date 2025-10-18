@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://wurnlievap65"]
+
+[ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://ddywb4q21bl8q" path="res://Scenes/Player/player.tscn" id="3_8gbba"]
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(1522, 20)
+
+[node name="Main" type="WorldEnvironment"]
+environment = SubResource("Environment_0xm2m")
+script = ExtResource("1_jjgbg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(281, 133)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="TextureRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -470.0
+offset_top = 133.0
+offset_right = 1014.0
+offset_bottom = 493.0
+color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(268, 497)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World"]
+
+[node name="Inimigos" type="Node2D" parent="World"]
+
+[node name="Upgrades" type="Node2D" parent="World"]
+
+[node name="Spawns" type="Node2D" parent="World"]
+
+[node name="enemy_spawn" type="Marker2D" parent="World/Spawns"]
+position = Vector2(-579, 249)
+
+[node name="enemy_spawn2" type="Marker2D" parent="World/Spawns"]
+position = Vector2(-569, 404)
+
+[node name="enemy_spawn3" type="Marker2D" parent="World/Spawns"]
+position = Vector2(-583, 339)
+
+[node name="enemy_spawn4" type="Marker2D" parent="World/Spawns"]
+position = Vector2(-559, 174)
+
+[node name="House" parent="World" instance=ExtResource("2_bo1nx")]
+position = Vector2(1240, 311)
+
+[node name="Player" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(369, 304)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="Casa" type="Marker2D" parent="."]
+position = Vector2(1083, 320)

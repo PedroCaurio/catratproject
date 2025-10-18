@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://1mo7x5iv25nf"]
+
+[ext_resource type="Script" uid="uid://bwvs0x1fek3je" path="res://Scripts/Enemy/enemy.gd" id="1_mw074"]
+[ext_resource type="Texture2D" uid="uid://nhplxluysi45" path="res://icon.svg" id="2_nvvbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t2r4"]
+size = Vector2(41, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvvbs"]
+size = Vector2(57.75, 56.625)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 19
+script = ExtResource("1_mw074")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, 9)
+shape = SubResource("RectangleShape2D_2t2r4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.21268, 0.159696, 1)
+position = Vector2(11, 10)
+scale = Vector2(0.355469, 0.34375)
+texture = ExtResource("2_nvvbs")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(11.125, 10.6875)
+shape = SubResource("RectangleShape2D_nvvbs")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
