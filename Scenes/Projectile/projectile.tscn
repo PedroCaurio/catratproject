@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://c05r3xtvfanwg" path="res://Scripts/Projectile/projectile.gd" id="1_wggxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wggxw"]
-radius = 22.5499
+radius = 29.5042
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mqh4e"]
-radius = 36.0035
+radius = 33.0341
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mw074"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
