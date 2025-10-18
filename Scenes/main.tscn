@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wurnlievap65"]
+[gd_scene load_steps=8 format=3 uid="uid://wurnlievap65"]
 
 [ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
@@ -7,7 +7,13 @@
 [sub_resource type="Environment" id="Environment_0xm2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
-size = Vector2(1522, 20)
+size = Vector2(1863, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(131, 531.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
+size = Vector2(228, 40)
 
 [node name="Main" type="WorldEnvironment"]
 environment = SubResource("Environment_0xm2m")
@@ -23,12 +29,28 @@ shape = SubResource("RectangleShape2D_8gbba")
 offset_left = -470.0
 offset_top = 133.0
 offset_right = 1014.0
-offset_bottom = 493.0
+offset_bottom = 497.0
 color = Color(0.190762, 0.190762, 0.190762, 1)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(268, 497)
+position = Vector2(438.5, 497)
 shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-740, 310)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1257, 286)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-579, 107)
+shape = SubResource("RectangleShape2D_kry3j")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-595, 502)
+shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -57,9 +79,6 @@ position = Vector2(1240, 311)
 
 [node name="Player" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(369, 304)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
 
 [node name="Casa" type="Marker2D" parent="."]
 position = Vector2(1083, 320)

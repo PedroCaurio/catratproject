@@ -16,6 +16,7 @@ func process_input(event: InputEvent) -> State:
 	
 func process_physics(delta: float) -> State:
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
+	
 	if direction == Vector2.ZERO:
 		return idle_state
 	parent.velocity = direction * parent.speed

@@ -4,13 +4,14 @@ extends CharacterBody2D
 signal collected
 
 # Enum para controlar o estado do projétil.
-enum State_enum { MOVING, IDLE }
+enum State_enum { MOVING, IDLE , RETURNING}
 
 # --- EXPORTS E VARIÁVEIS ---
 @export var speed: float = 700.0
-@export var max_bounces: int = 1 # Quantas vezes pode ricochetear antes de parar.
+@export var max_bounces: int = 3 # Quantas vezes pode ricochetear antes de parar.
 @onready var collectible_area: Area2D = $Area2D
 
+var player: Player
 var _bounces_left: int
 var _current_state: State_enum = State_enum.MOVING
 
@@ -24,6 +25,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Só processa o movimento se estiver no estado MOVING.
+	
+	if _current_state == State_enum.RETURNING:
+		pass
 	if _current_state == State_enum.MOVING:
 		move_and_bounce(delta)
 

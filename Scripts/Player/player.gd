@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: Node = $StateMachine
 @onready var state: Label = $State
-@export var speed := 200.0
+@export var speed := 300.0
 @export var max_ammo := 1
 @export var projectile_scene: PackedScene
 @export var spawn_offset:= 100.0
@@ -13,6 +13,7 @@ var current_ammo: int
 
 @onready var muzzle := $ShootPoint
 #@onready var muzzle: Marker2D = $Collector/ShootPoint
+@onready var color_rect: ColorRect = $ColorRect
 
 
 # --- STATE MACHINE FUNCTIONS ---
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	state.text = state_machine.current_state.name
-	
+	color_rect.global_position = get_global_mouse_position()
 	muzzle.look_at(get_global_mouse_position())
 
 # --- FUNÇOES ATIVAS ---

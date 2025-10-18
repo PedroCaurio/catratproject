@@ -6,12 +6,14 @@ extends WorldEnvironment
 @onready var spawns: Node2D = $World/Spawns
 @onready var inimigos: Node2D = $World/Inimigos
 const ENEMY = preload("res://Scenes/Enemy/enemy.tscn")
+@onready var color_rect: ColorRect = $ColorRect
 
 var difficulty: int = 2 # Numero de Inimigos por marker
 
 
 func _process(delta: float) -> void:
 	#await get_tree().create_timer(5.0).timeout
+	
 	if Input.is_action_just_pressed("horda"):
 		new_horde()
 

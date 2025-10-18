@@ -289,7 +289,7 @@ projectile_scene = ExtResource("2_74mp2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxkwu")
-animation = &"hurt"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1)
@@ -351,6 +351,13 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
 shape = SubResource("CircleShape2D_jhyir")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 105.0
+offset_top = -10.0
+offset_right = 114.0
+offset_bottom = -3.0
+color = Color(0.0778797, 0.31562, 0.999995, 1)
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]
