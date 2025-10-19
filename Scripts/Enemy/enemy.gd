@@ -2,36 +2,57 @@ class_name Enemy
 extends CharacterBody2D
 
 var target_position: Vector2 
-var speed:int =  800
-var target 
+var speed:int = 800
+var target
+var is_dead := false  # <- flag de morte
+@onready var sfx_rat_death: AudioStreamPlayer = $sfx_rat_death
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+const COLLECTABLE = preload("res://Scenes/Enviroment/collectable.tscn")
+signal enemy_killed
+
 func _process(delta: float) -> void:
+	# Se estiver morto, não faz mais nada
+	if is_dead:
+		return
+	
 	if target:
-		# Pega a posição global do alvo em cada frame.
-		# Isso garante que o nó seguirá o alvo mesmo que ele se mova.
 		target_position = target.global_position
-		
-		# Calcula a distância até o alvo.
 		var distance_to_target = global_position.distance_to(target_position)
 		
-		# Define uma pequena "zona morta" para evitar que o nó fique tremendo
-		# ao chegar muito perto do alvo. Se a distância for menor que 5 pixels, pare.
 		if distance_to_target > 5.0:
-			# Pega o vetor de direção normalizado (comprimento 1) do nó até o alvo.
 			var direction = global_position.direction_to(target_position)
-			
-			# Define a velocidade do corpo.
+			animated_sprite_2d.play("run")
 			velocity = direction * speed
 		else:
-			# Se estiver dentro da zona morta, para completamente.
 			velocity = Vector2.ZERO
+			animated_sprite_2d.stop()
+			await animated_sprite_2d.animation_finished
 		
-		# A função mágica que move o corpo e lida com colisões.
 		move_and_slide()
 
-
-
-	
-
-
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	queue_free()
+	if is_dead:
+		return
+	if randf() < 0.3:
+		var moeda_mt_foda = COLLECTABLE.instantiate()
+		get_parent().add_child(moeda_mt_foda)
+		moeda_mt_foda.global_position = global_position
+	if body.is_in_group("projectile"):
+		is_dead = true                     # <- impede o _process de rodar
+		velocity = Vector2.ZERO            # <- para o movimento imediatamente
+		enemy_killed.emit()
+		animated_sprite_2d.play("death_rat")
+		sfx_rat_death.play()
+	else:
+		pass
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "death_rat":
+		queue_free()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if animation_player.name == "attack":
+		$AnimatedSprite2D.play("run")

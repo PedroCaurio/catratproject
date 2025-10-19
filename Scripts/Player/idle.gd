@@ -7,7 +7,7 @@ extends State
 func enter() -> void:
 	super()
 	
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	if Input.is_action_just_pressed("shoot") and parent.current_ammo >0:
 		return shoot_state
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -15,5 +15,5 @@ func process_input(event: InputEvent) -> State:
 		return move_state
 	return null
 
-func process_physics(delta: float) -> State:
+func process_physics(_delta: float) -> State:
 	return null

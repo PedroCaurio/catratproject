@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dosldltqnfvqb"
+path="res://.godot/imported/3 - Tensao Baixa.wav-1b36d81554814693cb10d0e0550ec63f.sample"
+
+[deps]
+
+source_file="res://Assets/Audios In Game/3 - Tensao Baixa.wav"
+dest_files=["res://.godot/imported/3 - Tensao Baixa.wav-1b36d81554814693cb10d0e0550ec63f.sample"]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

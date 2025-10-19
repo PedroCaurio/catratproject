@@ -14,6 +14,13 @@ config/name="CatRatProject"
 run/main_scene="uid://wurnlievap65"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=2
+mouse_cursor/custom_image="uid://dx3jh8pwiadks"
+
 [input]
 
 right={
@@ -68,7 +75,3 @@ recall_projectile={
 2d_physics/layer_6="Collectables"
 2d_physics/layer_7="Player_hurtbox"
 2d_physics/layer_8="Rat Door"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

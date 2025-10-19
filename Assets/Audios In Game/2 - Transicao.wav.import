@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuvqpj8jbua1a"
+path="res://.godot/imported/2 - Transicao.wav-2bf773f56a78f8e889b04f7d70d961df.sample"
+
+[deps]
+
+source_file="res://Assets/Audios In Game/2 - Transicao.wav"
+dest_files=["res://.godot/imported/2 - Transicao.wav-2bf773f56a78f8e889b04f7d70d961df.sample"]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

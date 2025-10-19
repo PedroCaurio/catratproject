@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1vcm8hxl0r4r"]
+
+[ext_resource type="Script" uid="uid://bke8btbid460n" path="res://Scripts/Enviroment/collectable.gd" id="1_2lpnm"]
+[ext_resource type="Texture2D" uid="uid://cnnt5f2gcvds2" path="res://icon.svg" id="1_keepv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lpnm"]
+size = Vector2(151, 149)
+
+[node name="Collectable" type="Area2D" groups=["collectible"]]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_2lpnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 2.5)
+shape = SubResource("RectangleShape2D_2lpnm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture = ExtResource("1_keepv")

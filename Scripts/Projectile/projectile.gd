@@ -6,8 +6,8 @@ signal collected
 enum State_enum { MOVING, IDLE, RETURNING }
 
 # --- PARÂMETROS DE FÍSICA ---
-@export var linear_drag: float = 80.0
-@export var bounce_friction_factor: float = 0.8
+@export var linear_drag: float = 20.0
+@export var bounce_friction_factor: float = 0.6
 @export var min_speed_to_stop: float = 30.0
 @export var return_speed: float = 5000.0 ## NOVO: Velocidade específica para o retorno.
 @export var speed: float = 3000.0

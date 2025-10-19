@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx0e3qom3judd"]
+
+[ext_resource type="Script" uid="uid://foe153wlhe5d" path="res://Scripts/UI/finished.gd" id="1_wfa7w"]
+[ext_resource type="AudioStream" uid="uid://msnn86jk3k4c" path="res://Assets/Audios In Game/credits.wav" id="2_jodq2"]
+
+[node name="Finished" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfa7w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.321569)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 203.0
+offset_right = 972.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 56
+text = "Beta finalizada! 
+Obrigado por ter jogado"
+horizontal_alignment = 1
+
+[node name="Sair" type="Button" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 413.0
+offset_right = 748.0
+offset_bottom = 460.0
+text = "Menu"
+
+[node name="Créditos" type="Button" parent="."]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 487.0
+offset_right = 750.0
+offset_bottom = 534.0
+text = "Créditos"
+
+[node name="ost_finished" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jodq2")
+
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Créditos" to="." method="_on_créditos_pressed"]

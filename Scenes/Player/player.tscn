@@ -1,92 +1,58 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddywb4q21bl8q"]
+[gd_scene load_steps=33 format=3 uid="uid://ddywb4q21bl8q"]
 
-[ext_resource type="Texture2D" uid="uid://b8m7bcojpaaai" path="res://Assets/Black Units/Lancer/Lancer_UpRight_Defence.png" id="1_0u5uq"]
 [ext_resource type="Script" uid="uid://dvc571iw7mco2" path="res://Scripts/Player/player.gd" id="1_jlvik"]
 [ext_resource type="PackedScene" uid="uid://cmfih1x4exhxd" path="res://Scenes/Projectile/projectile.tscn" id="2_74mp2"]
+[ext_resource type="Texture2D" uid="uid://3buwbwlo4tpq" path="res://Assets/damagetake/take dano2.png" id="3_hnuln"]
+[ext_resource type="Texture2D" uid="uid://bxi7kqvnexpde" path="res://Assets/damagetake/take dano.png" id="4_aqm4k"]
 [ext_resource type="Texture2D" uid="uid://pkmsm11u38yn" path="res://Assets/idle/idle1.png" id="4_oikmp"]
 [ext_resource type="Texture2D" uid="uid://b5agddlh7q30h" path="res://Assets/idle/idle2.png" id="5_06tpx"]
 [ext_resource type="Script" uid="uid://cwhs5iygubus7" path="res://Scripts/Player/state_machine.gd" id="5_74mp2"]
-[ext_resource type="Texture2D" uid="uid://3buwbwlo4tpq" path="res://Assets/damagetake/take dano2.png" id="6_7g0yx"]
+[ext_resource type="Texture2D" uid="uid://yptcgqaum8ap" path="res://Assets/lançar/Anda pra dir/andagato2.png" id="5_r5xpd"]
+[ext_resource type="Texture2D" uid="uid://4xa4vfj8hxk7" path="res://Assets/lançar/Anda pra dir/andagato.png" id="6_ks1b7"]
 [ext_resource type="Script" uid="uid://b7kb621o3nwmp" path="res://Scripts/Player/move.gd" id="6_oikmp"]
 [ext_resource type="Script" uid="uid://b7smg1poxuvqr" path="res://Scripts/Player/idle.gd" id="7_06tpx"]
 [ext_resource type="Texture2D" uid="uid://b8m4aa5gmieui" path="res://Assets/lançar/lança1.png" id="7_7g0yx"]
-[ext_resource type="Texture2D" uid="uid://bxi7kqvnexpde" path="res://Assets/damagetake/take dano.png" id="7_dey5f"]
 [ext_resource type="Texture2D" uid="uid://dnygoytq15h4h" path="res://Assets/lançar/lança2.png" id="8_dey5f"]
+[ext_resource type="Texture2D" uid="uid://ptgepnws3aax" path="res://Assets/bola.png" id="9_dey5f"]
 [ext_resource type="Script" uid="uid://dqejc88rc22xm" path="res://Scripts/Player/shoot.gd" id="9_jhyir"]
 [ext_resource type="Script" uid="uid://c5smcjxg8gfg6" path="res://Scripts/Player/hurt.gd" id="10_74mp2"]
+[ext_resource type="Texture2D" uid="uid://b3mym1jcwq32h" path="res://Assets/bola2.png" id="10_r5xpd"]
+[ext_resource type="Script" uid="uid://c06322uj47wna" path="res://Scenes/Player/bola.gd" id="11_r5xpd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(0, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(320, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(640, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(960, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(1280, 0, 320, 320)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
-atlas = ExtResource("1_0u5uq")
-region = Rect2(1600, 0, 320, 320)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcvs5"]
+atlas = ExtResource("4_aqm4k")
+region = Rect2(0, 0, 652, 533)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(320, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei2r2"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(640, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6uq4"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(960, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5u0x"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(1280, 0, 320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po18e"]
-atlas = ExtResource("1_0u5uq")
 region = Rect2(1600, 0, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxkwu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7g0yx")
+"texture": ExtResource("3_hnuln")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dey5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r5xpd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ks1b7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hnuln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqm4k")
+"texture": SubResource("AtlasTexture_rcvs5")
 }],
-"loop": false,
+"loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,10 +90,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_dey5f")
+"texture": ExtResource("5_r5xpd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_7g0yx")
+"texture": ExtResource("6_ks1b7")
 }],
 "loop": true,
 "name": &"move",
@@ -145,12 +111,29 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ks1b7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dey5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_r5xpd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.1
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo5na"]
 radius = 256.97
 height = 513.94
 
+[sub_resource type="LabelSettings" id="LabelSettings_hnuln"]
+font_size = 200
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gk6dx"]
-radius = 321.34
+radius = 373.976
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhyir"]
 radius = 375.215
@@ -159,15 +142,14 @@ radius = 375.215
 polygon = PackedVector2Array(-188.342, -135.371, -155.971, 67.6854, -163.328, 86.8139, -122.128, 248.67, 183.928, 247.199, 205.999, 180.985, 105.942, 80.9282, 169.213, -36.7855, 198.642, -201.585, 60.3283, -208.942, 80.9282, -242.785, -52.9712, -258.97)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(0.679615, 0.679615)
 collision_layer = 130
 collision_mask = 181
 script = ExtResource("1_jlvik")
 projectile_scene = ExtResource("2_74mp2")
 
 [node name="TrajectoryPreview" type="Line2D" parent="."]
-width = 5.0
-default_color = Color(1, 1, 1, 0.486275)
+width = 80.0
+default_color = Color(0.632666, 0.492395, 0.073323, 0.486275)
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
@@ -177,9 +159,16 @@ collision_mask = 133
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxkwu")
-animation = &"shoot"
+animation = &"hurt"
+
+[node name="bola" type="AnimatedSprite2D" parent="."]
+position = Vector2(-34, -352)
+sprite_frames = SubResource("SpriteFrames_ks1b7")
+frame_progress = 0.00596831
+script = ExtResource("11_r5xpd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 1)
 shape = SubResource("CapsuleShape2D_xo5na")
 
@@ -217,6 +206,7 @@ offset_left = -25.0
 offset_top = -76.0
 offset_right = 15.0
 offset_bottom = -53.0
+label_settings = SubResource("LabelSettings_hnuln")
 metadata/_edit_use_anchors_ = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -227,6 +217,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_gk6dx")
 
 [node name="Collector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 32
 
@@ -234,17 +225,27 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_jhyir")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_7g0yx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+offset_left = -74.0
+offset_top = -80.0
+offset_right = 78.0
+offset_bottom = 72.0
 color = Color(0.999338, 0.823746, 0.88451, 1)
 
 [node name="ShootPoint" type="Marker2D" parent="."]
 position = Vector2(0, -2.94284)
 scale = Vector2(19490.2, 209000)
+
+[node name="Recalls" type="Label" parent="."]
+offset_left = 326.0
+offset_top = -301.0
+offset_right = 366.0
+offset_bottom = -253.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]

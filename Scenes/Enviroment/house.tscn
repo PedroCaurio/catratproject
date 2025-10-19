@@ -1,29 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://bib76k5xchi8r"]
+[gd_scene load_steps=7 format=3 uid="uid://bib76k5xchi8r"]
 
 [ext_resource type="Script" uid="uid://cdm2o56f8331u" path="res://Scripts/Enviroment/house.gd" id="1_e1h3r"]
-[ext_resource type="Texture2D" uid="uid://cnnt5f2gcvds2" path="res://icon.svg" id="1_mguac"]
+[ext_resource type="AudioStream" uid="uid://oo3grshsjqah" path="res://Assets/Audios In Game/Casa/HouseDamage.wav" id="2_e1h3r"]
+[ext_resource type="Shader" uid="uid://r5efmvgbljbb" path="res://Scenes/UI/Shaders/fedor.gdshader" id="3_rehl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1h3r"]
-size = Vector2(268.5, 269)
+size = Vector2(1619.5, 885)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rehl7"]
-size = Vector2(328.397, 327.309)
+size = Vector2(1689.2, 946.655)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rehl7"]
+shader = ExtResource("3_rehl7")
+shader_parameter/vapor_color = Color(0.4, 1, 0.3, 0.35)
+shader_parameter/wave_strength = 0.05
+shader_parameter/wave_speed = 2.5
+shader_parameter/wave_freq = 8.0
+shader_parameter/vertical_fade = 0.8
+shader_parameter/distortion_strength = 0.02
+shader_parameter/distortion_speed = 1.5
+shader_parameter/particle_density = 30.0
+shader_parameter/particle_speed = 1.0
+shader_parameter/particle_size = 0.03
 
 [node name="House" type="StaticBody2D"]
-rotation = 1.57433
-scale = Vector2(0.876589, 0.876589)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_e1h3r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 4)
+position = Vector2(651.372, 294.509)
 rotation = -0.00670075
-scale = Vector2(2.42969, 2.42969)
-texture = ExtResource("1_mguac")
+scale = Vector2(12.5455, 7.03677)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.25, 3.5)
+position = Vector2(-5, -4)
 shape = SubResource("RectangleShape2D_e1h3r")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -31,9 +42,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(3.17437, 5.87052)
-rotation = 1.56572
-scale = Vector2(1, 1)
+position = Vector2(-7, 6)
 shape = SubResource("RectangleShape2D_rehl7")
 
 [node name="Vida" type="Label" parent="."]
@@ -42,5 +51,25 @@ offset_top = -211.0
 offset_right = 87.0
 offset_bottom = -158.0
 metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
+offset_left = -768.0
+offset_top = -545.0
+offset_right = 761.0
+offset_bottom = -471.0
+max_value = 3.0
+
+[node name="Damage_house" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e1h3r")
+
+[node name="fedor" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rehl7")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

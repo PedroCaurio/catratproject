@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lvne11nyjjwp"
+path="res://.godot/imported/9 - Transicao Metade.wav-e7a715b86d44b50b4d165b4744339403.sample"
+
+[deps]
+
+source_file="res://Assets/Audios In Game/9 - Transicao Metade.wav"
+dest_files=["res://.godot/imported/9 - Transicao Metade.wav-e7a715b86d44b50b4d165b4744339403.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -12,7 +12,7 @@ func enter() -> void:
 		parent.animation.flip_h = true
 	super()
 
-func process_input(event: InputEvent) -> State:
+func process_input(_event: InputEvent) -> State:
 	print(parent.global_position.direction_to(parent.get_global_mouse_position()).x < 0.0)
 	
 	animation_shoot()

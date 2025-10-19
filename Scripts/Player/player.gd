@@ -1,5 +1,6 @@
 class_name Player
 extends CharacterBody2D
+@onready var recalls: Label = $Recalls
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: Node = $StateMachine
@@ -8,7 +9,8 @@ extends CharacterBody2D
 @export var max_ammo := 1  
 @export var projectile_scene: PackedScene
 @export var spawn_offset:= 600.0
-@export var preview_max_range := 1000.0 # O alcance máximo da pré-visualização.
+@export var preview_max_range := 2000.0 # O alcance máximo da pré-visualização.
+@export var current_recall: = 0
 var current_ammo: int
 var projectile_instance: CharacterBody2D = null
 @onready var muzzle := $ShootPoint
@@ -16,6 +18,7 @@ var projectile_instance: CharacterBody2D = null
 @onready var color_rect: ColorRect = $ColorRect
 @onready var trajectory_preview: Line2D = $TrajectoryPreview 
 @onready var aim_raycast: RayCast2D = $AimRayCast           
+@onready var bola: AnimatedSprite2D = $bola
 
 # --- STATE MACHINE FUNCTIONS ---
 func _ready() -> void:
@@ -24,7 +27,8 @@ func _ready() -> void:
 
 	
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("recall_projectile") and projectile_instance:
+	if Input.is_action_just_pressed("recall_projectile") and projectile_instance and current_recall > 0:
+		current_ammo -= 1
 		projectile_instance.recall_projectile()
 	state_machine.process_input(event)
 func _physics_process(delta: float) -> void:
@@ -33,6 +37,7 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	state.text = state_machine.current_state.name
+	recalls.text = str(current_recall)
 	color_rect.global_position = get_global_mouse_position()
 	muzzle.look_at(get_global_mouse_position())
 	_update_trajectory_preview()
@@ -65,9 +70,11 @@ func shoot() -> void:
 # Funçoes reativas
 func hide_aim():
 	trajectory_preview.hide()
+	bola.hide()
 
 func show_aim():
 	trajectory_preview.show()
+	bola.show()
 	
 func _update_trajectory_preview() -> void:
 	# 1. O ponto de início é SEMPRE a posição global do muzzle.
@@ -96,6 +103,9 @@ func _update_trajectory_preview() -> void:
 
 
 func _on_collector_area_entered(area: Area2D) -> void:
+	if area is Collectable:
+		current_recall += 1
+		area.queue_free()
 	# Verifica se a área que entrou pertence a um projétil coletável.
 	if area.get_parent().is_in_group("collectible"):
 		# A área é filha do projétil, então chamamos a função no pai.
@@ -106,10 +116,16 @@ func _on_collector_area_entered(area: Area2D) -> void:
 			projectile.collect()
 			
 			# Incrementa a munição, garantindo que não ultrapasse o máximo.
-			current_ammo = min(current_ammo + 1, max_ammo)
+			current_ammo = 1
+			print("Municao:", current_ammo)
 			show_aim()
 			print("Munição recuperada! Total: ", current_ammo)
 
-
+func normal_speed():
+	speed = 2000.0
+	
+func slow():
+	speed = 1000.0
+	
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	state_machine.take_damage()
