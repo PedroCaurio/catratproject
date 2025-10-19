@@ -35,7 +35,7 @@ size = Vector2(4888.46, 496.994)
 size = Vector2(547.891, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
-size = Vector2(233.5, 7703)
+size = Vector2(160.75, 7850.5)
 
 [sub_resource type="Curve" id="Curve_8gbba"]
 _limits = [0.0, 296.59, 0.0, 1.0]
@@ -102,11 +102,11 @@ scale = Vector2(20.6, 10.64)
 shape = SubResource("RectangleShape2D_ynf5e")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-3351, 3476)
+position = Vector2(-3340.38, 3422.75)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(3593, 3711)
+position = Vector2(3308, 3521)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="Inimigos" type="Node2D" parent="World"]
@@ -193,17 +193,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Player" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(286, 596)
+position = Vector2(3046, 691)
 rotation = 0.088081
 
 [node name="camera" type="Camera2D" parent="Player"]
-position = Vector2(-80.8092, -471.72)
+position = Vector2(-33.4736, 587.221)
 rotation = -0.088081
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.2, 0.2)
 process_callback = 0
-limit_left = -3400
+limit_left = -7000
 limit_top = -3300
-limit_right = 3400
+limit_right = 7000
 limit_bottom = 8000
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
