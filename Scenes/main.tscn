@@ -58,7 +58,6 @@ shape = SubResource("RectangleShape2D_8gbba")
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-440.071, 572.946)
 rotation = -1.57109
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8gbba")
 
 [node name="World" type="Node2D" parent="."]
@@ -98,6 +97,7 @@ rotation = -1.57092
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(577, 324)
+zoom = Vector2(0.26, 0.26)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_enabled = true
