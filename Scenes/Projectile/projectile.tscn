@@ -1,15 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmfih1x4exhxd"]
 
 [ext_resource type="Script" uid="uid://c05r3xtvfanwg" path="res://Scripts/Projectile/projectile.gd" id="1_wggxw"]
+[ext_resource type="Texture2D" uid="uid://ptgepnws3aax" path="res://Assets/bola.png" id="2_wggxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wggxw"]
 radius = 22.5499
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mqh4e"]
 radius = 36.0035
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mw074"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 8
@@ -30,7 +28,5 @@ position = Vector2(-2, -2.5)
 shape = SubResource("CircleShape2D_mqh4e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(6.30513e-06, 0.749433, 0, 1)
 position = Vector2(-2, -2)
-scale = Vector2(0.351562, 0.320312)
-texture = SubResource("CompressedTexture2D_mw074")
+texture = ExtResource("2_wggxw")

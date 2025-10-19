@@ -1,6 +1,5 @@
 extends State
 
-
 @export var shoot_state: State
 @export var move_state: State
 @export var hurt_state: State
