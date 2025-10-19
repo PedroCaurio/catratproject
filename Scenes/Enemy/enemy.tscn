@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1mo7x5iv25nf"]
+[gd_scene load_steps=19 format=3 uid="uid://1mo7x5iv25nf"]
 
 [ext_resource type="Script" uid="uid://bwvs0x1fek3je" path="res://Scripts/Enemy/enemy.gd" id="1_mw074"]
 [ext_resource type="Texture2D" uid="uid://cui015nrr7f0p" path="res://Assets/Black Units/andaratao/anda1.png" id="2_2t2r4"]
@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c5mh4hlgj46on" path="res://Assets/Audios In Game/Death/RatDeath_1.wav" id="13_1vi6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2t2r4"]
-size = Vector2(122, 82)
+size = Vector2(503, 438)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d40jh"]
 animations = [{
@@ -71,9 +71,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvvbs"]
-size = Vector2(501.043, 272.572)
-
 [sub_resource type="Animation" id="Animation_xmc1t"]
 length = 0.001
 tracks/0/type = "value"
@@ -87,18 +84,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5luce"]
@@ -116,18 +101,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d2jnu"]
 _data = {
@@ -141,7 +114,7 @@ collision_mask = 19
 script = ExtResource("1_mw074")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-44.5, 45)
 shape = SubResource("RectangleShape2D_2t2r4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -149,15 +122,6 @@ position = Vector2(3.8147e-06, -1.90735e-06)
 sprite_frames = SubResource("SpriteFrames_d40jh")
 animation = &"attack_rat"
 frame = 2
-
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(4.00001, 80)
-rotation = 0.0110677
-shape = SubResource("RectangleShape2D_nvvbs")
 
 [node name="sfx_rat_death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_1vi6b")
@@ -168,5 +132,4 @@ libraries = {
 }
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,15 +1,20 @@
-[gd_scene load_steps=24 format=3 uid="uid://wurnlievap65"]
+[gd_scene load_steps=29 format=3 uid="uid://wurnlievap65"]
 
 [ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://bhgh33v1ggpk0" path="res://Assets/casa3.png" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ddywb4q21bl8q" path="res://Scenes/Player/player.tscn" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://d3qkwq1wd3ij3" path="res://Assets/props/moita1.png" id="3_b3802"]
 [ext_resource type="PackedScene" uid="uid://dj5p6t6h8a41k" path="res://Scenes/Enviroment/map_object.tscn" id="4_21xkr"]
+[ext_resource type="Texture2D" uid="uid://bhe8tsvk4sra4" path="res://Assets/props/moita2.png" id="4_fevyy"]
 [ext_resource type="Script" uid="uid://da0p4ntmhqque" path="res://Scenes/camera.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://c2wbyj8vaasku" path="res://Assets/props/moita3.png" id="5_hibaj"]
+[ext_resource type="Texture2D" uid="uid://bow8vsl3dptd0" path="res://Assets/props/moita4.png" id="6_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://l4yfnhoao1x" path="res://Assets/Audios In Game/1 - Batida.wav" id="7_6bp64"]
 [ext_resource type="AudioStream" uid="uid://cuvqpj8jbua1a" path="res://Assets/Audios In Game/2 - Transicao.wav" id="7_d1ilt"]
 [ext_resource type="AudioStream" uid="uid://ddpr41rps6ynp" path="res://Assets/Audios In Game/4 - Transicao Metade.wav" id="8_6iyac"]
 [ext_resource type="AudioStream" uid="uid://dosldltqnfvqb" path="res://Assets/Audios In Game/3 - Tensao Baixa.wav" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://cdpfs5j8lhua5" path="res://Scenes/Enviroment/tunel.tscn" id="8_fevyy"]
 [ext_resource type="AudioStream" uid="uid://0rdpy5tgcmwh" path="res://Assets/Audios In Game/6 - Transicao 130bpm.wav" id="9_fdnlq"]
 [ext_resource type="AudioStream" uid="uid://bvuyo4wo5b8q4" path="res://Assets/Audios In Game/5 - Tensao Media.wav" id="9_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://di427k12lcp6r" path="res://Assets/Audios In Game/7 - Tensao Alta.wav" id="10_hptm8"]
@@ -30,7 +35,7 @@ size = Vector2(4888.46, 496.994)
 size = Vector2(547.891, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
-size = Vector2(81, 3348)
+size = Vector2(233.5, 7703)
 
 [sub_resource type="Curve" id="Curve_8gbba"]
 _limits = [0.0, 296.59, 0.0, 1.0]
@@ -47,17 +52,30 @@ shader = ExtResource("14_jkdf5")
 environment = SubResource("Environment_0xm2m")
 script = ExtResource("1_jjgbg")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-97, 176)
-collision_layer = 128
-collision_mask = 128
-
 [node name="World" type="Node2D" parent="."]
 position = Vector2(3950, 194)
 
 [node name="Casa3" type="Sprite2D" parent="World"]
 position = Vector2(-3840, -107)
 texture = ExtResource("2_kry3j")
+
+[node name="Moita1" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(2173, -1051)
+texture = ExtResource("3_b3802")
+
+[node name="Moita2" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-2648, -1127)
+rotation = -0.164477
+texture = ExtResource("4_fevyy")
+
+[node name="Moita3" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(3654, -305)
+rotation = 0.115128
+texture = ExtResource("5_hibaj")
+
+[node name="Moita4" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-4233, -304)
+texture = ExtResource("6_pdsj5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World/Casa3"]
 collision_layer = 128
@@ -79,16 +97,16 @@ rotation = 0.297987
 shape = SubResource("RectangleShape2D_344ge")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-19.275, 3300)
+position = Vector2(-104, 7459)
 scale = Vector2(20.6, 10.64)
 shape = SubResource("RectangleShape2D_ynf5e")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-5660.5, 1583)
+position = Vector2(-3351, 3476)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(5626, 1493)
+position = Vector2(3593, 3711)
 shape = SubResource("RectangleShape2D_hptm8")
 
 [node name="Inimigos" type="Node2D" parent="World"]
@@ -99,19 +117,22 @@ shape = SubResource("RectangleShape2D_hptm8")
 position = Vector2(-5458, -640)
 
 [node name="enemy_spawn" type="Marker2D" parent="World/Spawns"]
-position = Vector2(7848, 3191)
+position = Vector2(4195, 9757)
 
 [node name="enemy_spawn2" type="Marker2D" parent="World/Spawns"]
-position = Vector2(4751, 5688)
+position = Vector2(2375, 9444)
 
 [node name="enemy_spawn3" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-4760, 2821)
+position = Vector2(860, 9540)
 
 [node name="enemy_spawn4" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-1450, 5626)
+position = Vector2(-913, 9663)
 
 [node name="House" parent="World" instance=ExtResource("2_bo1nx")]
 position = Vector2(-4874, -1634)
+
+[node name="Tunel" parent="World/House" instance=ExtResource("8_fevyy")]
+position = Vector2(-774, 7722)
 
 [node name="Casa_points" type="Node2D" parent="World"]
 position = Vector2(-3794, -5873)
@@ -176,14 +197,14 @@ position = Vector2(286, 596)
 rotation = 0.088081
 
 [node name="camera" type="Camera2D" parent="Player"]
-position = Vector2(-71.844, -472.512)
+position = Vector2(-80.8092, -471.72)
 rotation = -0.088081
-zoom = Vector2(0.19, 0.19)
+zoom = Vector2(0.1, 0.1)
 process_callback = 0
-limit_left = -5500
-limit_top = -5000
-limit_right = 5500
-limit_bottom = 3000
+limit_left = -3400
+limit_top = -3300
+limit_right = 3400
+limit_bottom = 8000
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_enabled = true
@@ -205,5 +226,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.121569)
+
+[node name="Tunel" parent="." instance=ExtResource("8_fevyy")]
+position = Vector2(1549, 4640)
 
 [connection signal="timeout" from="Player/Timer" to="Player/camera" method="_on_timer_timeout"]

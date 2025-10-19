@@ -19,5 +19,5 @@ func process_physics(delta: float) -> State:
 	return null
 func hurt()-> void:
 	#await parent.animation.animation_finished
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(0.8).timeout
 	state_machine.change_state(idle_state)

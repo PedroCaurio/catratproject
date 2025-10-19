@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bib76k5xchi8r"]
+[gd_scene load_steps=15 format=3 uid="uid://bib76k5xchi8r"]
 
 [ext_resource type="Script" uid="uid://cdm2o56f8331u" path="res://Scripts/Enviroment/house.gd" id="1_e1h3r"]
 [ext_resource type="AudioStream" uid="uid://oo3grshsjqah" path="res://Assets/Audios In Game/Casa/HouseDamage.wav" id="2_e1h3r"]
@@ -14,7 +14,7 @@ animations = [{
 "texture": ExtResource("2_ri1mm")
 }],
 "loop": true,
-"name": &"casa1",
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -22,7 +22,7 @@ animations = [{
 "texture": ExtResource("3_a88qj")
 }],
 "loop": true,
-"name": &"casa2",
+"name": &"1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -30,7 +30,7 @@ animations = [{
 "texture": ExtResource("4_xd3f0")
 }],
 "loop": true,
-"name": &"casa3",
+"name": &"2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -38,15 +38,92 @@ animations = [{
 "texture": ExtResource("5_4awx7")
 }],
 "loop": true,
-"name": &"casa4",
+"name": &"3",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1h3r"]
-size = Vector2(3391, 3261)
+size = Vector2(2550, 3127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rehl7"]
-size = Vector2(2492, 1397.5)
+size = Vector2(3149, 1469.75)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri1mm"]
+bg_color = Color(0.82606, 0.82606, 0.82606, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a88qj"]
+bg_color = Color(0.251086, 0.663858, 0.504357, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_a88qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("casa:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("casa:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ri1mm"]
+resource_name = "dano"
+length = 0.403
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("casa:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0266667, 0.0933333, 0.166667, 0.233333, 0.306667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.869, 1.498), Vector2(1, 1), Vector2(0.835, 1.16), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("casa:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.974624, 0.434038, 0.553291, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xd3f0"]
+_data = {
+&"RESET": SubResource("Animation_a88qj"),
+&"dano": SubResource("Animation_ri1mm")
+}
 
 [node name="House" type="StaticBody2D"]
 collision_layer = 16
@@ -54,20 +131,25 @@ collision_mask = 0
 script = ExtResource("1_e1h3r")
 
 [node name="casa" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.984314, 1, 1, 1)
 position = Vector2(667, 298)
 sprite_frames = SubResource("SpriteFrames_rehl7")
-animation = &"casa4"
+animation = &"1"
+autoplay = "0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(676.5, 143.5)
+visible = false
+position = Vector2(743, 76.5)
 shape = SubResource("RectangleShape2D_e1h3r")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(693, 1216)
+visible = false
+position = Vector2(712.5, 1091)
 shape = SubResource("RectangleShape2D_rehl7")
 
 [node name="Vida" type="Label" parent="."]
@@ -78,14 +160,21 @@ offset_bottom = -158.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-modulate = Color(0, 1, 0, 1)
-offset_left = -768.0
-offset_top = -545.0
-offset_right = 761.0
-offset_bottom = -471.0
+offset_left = -273.0
+offset_top = -601.0
+offset_right = 1727.0
+offset_bottom = -381.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ri1mm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a88qj")
 max_value = 3.0
+show_percentage = false
 
 [node name="Damage_house" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_e1h3r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xd3f0")
+}
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

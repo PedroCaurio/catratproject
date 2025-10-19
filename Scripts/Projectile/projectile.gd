@@ -7,10 +7,10 @@ enum State_enum { MOVING, IDLE, RETURNING }
 
 # --- PARÂMETROS DE FÍSICA ---
 @export var linear_drag: float = 20.0
-@export var bounce_friction_factor: float = 0.6
+@export var bounce_friction_factor: float = 0.9
 @export var min_speed_to_stop: float = 30.0
 @export var return_speed: float = 5000.0 ## NOVO: Velocidade específica para o retorno.
-@export var speed: float = 3000.0
+@export var speed: float = 3500.0
 # --- REFERÊNCIAS E VARIÁVEIS ---ds da
 @onready var collectible_area: Area2D = $Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -66,6 +66,8 @@ func _process_movement_and_collision(delta: float) -> void:
 	var collision_info: KinematicCollision2D = move_and_collide(velocity * delta)
 	
 	if collision_info:
+		if collision_info.get_collider() is Enemy:
+			collision_info.get_collider().take_damage(self)
 		velocity = velocity.bounce(collision_info.get_normal())
 		velocity *= bounce_friction_factor
 

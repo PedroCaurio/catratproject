@@ -26,13 +26,14 @@ extends WorldEnvironment
 const ENEMY = preload("res://Scenes/Enemy/enemy.tscn")
 
 var wave_counter: int = 0
-var waves_difficulty: Array = [5, 8, 15] # número de inimigos por horda
+var waves_difficulty: Array = [2, 4, 8, 15] # número de inimigos por horda
 var summoning := false
 
 func _ready() -> void:
 	house.house_hurt.connect(activate_fedor_effect)
 func _process(delta: float) -> void:
-	if wave_counter == waves_difficulty.size():
+	print("Wave atual", wave_counter)
+	if wave_counter == waves_difficulty.size() and inimigos.get_child_count() == 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
 		return
 
@@ -53,13 +54,14 @@ func new_horde() -> void:
 	var markers := spawns.get_children()
 
 	for spawn in range(spawn_locs):
-		var loc = markers.pop_back()
 		for __ in range(waves_difficulty[wave_counter]):
+			var loc = markers.pick_random()
 			var enemy = ENEMY.instantiate()
 			inimigos.add_child(enemy)
 			enemy.global_position = loc.global_position + Vector2(randi_range(-100, 100), randi_range(-100, 100)) * 10
 			enemy.target = casa_points.get_children().pick_random()
 			enemy.enemy_killed.connect(shake_cam)
+			await get_tree().create_timer(randi_range(1.0, 1.5)).timeout
 
 	wave_counter += 1
 	summoning = false

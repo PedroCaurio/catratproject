@@ -19,9 +19,8 @@ config/icon="uid://dn853dar70s3s"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/size/mode=2
+window/size/viewport_width=720
+window/size/viewport_height=1280
 mouse_cursor/custom_image="uid://dn2awjs073hqq"
 
 [input]

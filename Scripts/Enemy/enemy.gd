@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		
 		move_and_slide()
 
-func _on_hurtbox_body_entered(body: Node2D) -> void:
+func take_damage(body: Node2D) -> void:
 	if is_dead:
 		return
 	if randf() < 0.3:
