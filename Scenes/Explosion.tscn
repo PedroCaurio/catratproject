@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnamx77hu2dub"]
+
+[ext_resource type="Shader" uid="uid://d2073cto0pgqa" path="res://Scenes/Explosion.gdshader" id="1_mbc3v"]
+[ext_resource type="AudioStream" uid="uid://o4lxxfadf6la" path="res://Assets/Audios In Game/Death/RatDeath_4.wav" id="2_ix64a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ix64a"]
+shader = ExtResource("1_mbc3v")
+shader_parameter/boom_pal1 = Vector3(0.2, 0.15, 0.3)
+shader_parameter/boom_pal2 = Vector3(0.9, 0.15, 0.05)
+shader_parameter/boom_pal3 = Vector3(0.9, 0.5, 0.1)
+shader_parameter/boom_pal4 = Vector3(0.95, 0.95, 0.35)
+shader_parameter/smoke_pal1 = Vector3(0.2, 0.15, 0.3)
+shader_parameter/smoke_pal2 = Vector3(0.35, 0.3, 0.45)
+shader_parameter/smoke_pal3 = Vector3(0.5, 0.45, 0.6)
+shader_parameter/size = 5.0
+shader_parameter/disperse = 1.0
+shader_parameter/boom_repeat = 1.0
+shader_parameter/boom_shape = 12.0
+shader_parameter/boom_distortion = 0.5
+shader_parameter/boom_bubbles = 0.5
+shader_parameter/boom_bw = 0.5
+shader_parameter/smoke_repeat = 1.0
+shader_parameter/smoke_shape = 16.0
+shader_parameter/smoke_distortion = 1.5
+shader_parameter/smoke_bubbles = 0.5
+shader_parameter/smoke_bw = 0.75
+shader_parameter/disp = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ix64a"]
+offsets = PackedFloat32Array(0, 0.383117, 0.454545)
+colors = PackedColorArray(0, 0, 0, 1, 0.474026, 0.474026, 0.474026, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wcvtd"]
+gradient = SubResource("Gradient_ix64a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcvtd"]
+shader = ExtResource("1_mbc3v")
+shader_parameter/boom_pal1 = Vector3(0.2, 0.15, 0.3)
+shader_parameter/boom_pal2 = Vector3(0.9, 0.15, 0.05)
+shader_parameter/boom_pal3 = Vector3(0.9, 0.5, 0.1)
+shader_parameter/boom_pal4 = Vector3(0.95, 0.95, 0.35)
+shader_parameter/smoke_pal1 = Vector3(0.2, 0.15, 0.3)
+shader_parameter/smoke_pal2 = Vector3(0.35, 0.3, 0.45)
+shader_parameter/smoke_pal3 = Vector3(0.5, 0.45, 0.6)
+shader_parameter/size = 5.0
+shader_parameter/disperse = 1.0
+shader_parameter/boom_repeat = 1.0
+shader_parameter/boom_shape = 12.0
+shader_parameter/boom_distortion = 0.5
+shader_parameter/boom_bubbles = 0.5
+shader_parameter/boom_bw = 0.5
+shader_parameter/smoke_repeat = 1.0
+shader_parameter/smoke_shape = 16.0
+shader_parameter/smoke_distortion = 1.5
+shader_parameter/smoke_bubbles = 0.5
+shader_parameter/smoke_bw = 0.75
+shader_parameter/disp = Vector2(0, 0)
+
+[node name="Explosion" type="Node2D"]
+material = SubResource("ShaderMaterial_ix64a")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ix64a")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_wcvtd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wcvtd")
