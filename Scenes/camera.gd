@@ -9,6 +9,8 @@ var is_hitstopping := false
 func _ready():
 	original_position = position
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+	
 	
 
 func start_hitstop(duration: float):
@@ -26,7 +28,7 @@ func _on_hitstop_timeout():
 
 func _process(_delta):
 	if is_hitstopping:
-		position = original_position + Vector2(randf() - 0.5, randf() - 0.5) * shake_amount
+		position = original_position + Vector2(randf() - 0.5, randf() - 0.5) * shake_amount *_delta
 
 
 func _on_timer_timeout() -> void:

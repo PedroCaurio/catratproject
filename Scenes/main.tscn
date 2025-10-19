@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://wurnlievap65"]
+[gd_scene load_steps=24 format=3 uid="uid://wurnlievap65"]
 
 [ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://0rdpy5tgcmwh" path="res://Assets/Audios In Game/6 - Transicao 130bpm.wav" id="9_fdnlq"]
 [ext_resource type="AudioStream" uid="uid://bvuyo4wo5b8q4" path="res://Assets/Audios In Game/5 - Tensao Media.wav" id="9_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://di427k12lcp6r" path="res://Assets/Audios In Game/7 - Tensao Alta.wav" id="10_hptm8"]
+[ext_resource type="Shader" uid="uid://r5efmvgbljbb" path="res://Scenes/UI/Shaders/fedor.gdshader" id="14_jkdf5"]
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
 
@@ -38,6 +39,9 @@ point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_8gbba"]
 curve = SubResource("Curve_8gbba")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkdf5"]
+shader = ExtResource("14_jkdf5")
 
 [node name="Main" type="WorldEnvironment"]
 environment = SubResource("Environment_0xm2m")
@@ -107,7 +111,7 @@ position = Vector2(-4760, 2821)
 position = Vector2(-1450, 5626)
 
 [node name="House" parent="World" instance=ExtResource("2_bo1nx")]
-position = Vector2(-4244, -494)
+position = Vector2(-4874, -1634)
 
 [node name="Casa_points" type="Node2D" parent="World"]
 position = Vector2(-3794, -5873)
@@ -123,24 +127,6 @@ scale = Vector2(1, 0.520825)
 [node name="Casa4" type="Marker2D" parent="World/Casa_points"]
 position = Vector2(-1264, 5724)
 scale = Vector2(1, 0.520825)
-
-[node name="Player" parent="." instance=ExtResource("3_8gbba")]
-position = Vector2(286, 596)
-rotation = 0.088081
-
-[node name="camera" type="Camera2D" parent="Player"]
-position = Vector2(-71.844, -472.512)
-rotation = -0.088081
-zoom = Vector2(0.19, 0.19)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 3.0
-rotation_smoothing_enabled = true
-rotation_smoothing_speed = 3.0
-script = ExtResource("4_jjvhh")
-
-[node name="Timer" type="Timer" parent="Player"]
-process_mode = 3
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(3950, 194)
@@ -178,5 +164,46 @@ stream = ExtResource("9_ynf5e")
 
 [node name="Horde3" type="AudioStreamPlayer" parent="Hordes_sounds"]
 stream = ExtResource("10_hptm8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(286, 596)
+rotation = 0.088081
+
+[node name="camera" type="Camera2D" parent="Player"]
+position = Vector2(-71.844, -472.512)
+rotation = -0.088081
+zoom = Vector2(0.19, 0.19)
+process_callback = 0
+limit_left = -5500
+limit_top = -5000
+limit_right = 5500
+limit_bottom = 3000
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.0
+script = ExtResource("4_jjvhh")
+
+[node name="Timer" type="Timer" parent="Player"]
+process_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fedor" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_jkdf5")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.121569)
 
 [connection signal="timeout" from="Player/Timer" to="Player/camera" method="_on_timer_timeout"]

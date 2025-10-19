@@ -13,6 +13,7 @@ enum State_enum { MOVING, IDLE, RETURNING }
 @export var speed: float = 3000.0
 # --- REFERÊNCIAS E VARIÁVEIS ---ds da
 @onready var collectible_area: Area2D = $Area2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var _current_state: State_enum = State_enum.MOVING
 var player: Player ## NOVO: Referência para o jogador que atirou.
@@ -20,6 +21,8 @@ var player: Player ## NOVO: Referência para o jogador que atirou.
 func _ready() -> void:
 	add_to_group("collectible")
 	collectible_area.monitoring = false
+
+	
 
 ## NOVO: Função de inicialização para passar a referência do jogador.
 # Esta é a prática correta de Injeção de Dependência em POO.

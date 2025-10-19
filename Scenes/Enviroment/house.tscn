@@ -1,40 +1,65 @@
-[gd_scene load_steps=7 format=3 uid="uid://bib76k5xchi8r"]
+[gd_scene load_steps=10 format=3 uid="uid://bib76k5xchi8r"]
 
 [ext_resource type="Script" uid="uid://cdm2o56f8331u" path="res://Scripts/Enviroment/house.gd" id="1_e1h3r"]
 [ext_resource type="AudioStream" uid="uid://oo3grshsjqah" path="res://Assets/Audios In Game/Casa/HouseDamage.wav" id="2_e1h3r"]
-[ext_resource type="Shader" uid="uid://r5efmvgbljbb" path="res://Scenes/UI/Shaders/fedor.gdshader" id="3_rehl7"]
+[ext_resource type="Texture2D" uid="uid://ywm5pm2kvjpe" path="res://Scenes/UI/Shaders/casa_1.png" id="2_ri1mm"]
+[ext_resource type="Texture2D" uid="uid://dwwsfwiceqxtk" path="res://Scenes/UI/Shaders/casa_2.png" id="3_a88qj"]
+[ext_resource type="Texture2D" uid="uid://c1ygsridpsbv" path="res://Scenes/UI/Shaders/casa_3.png" id="4_xd3f0"]
+[ext_resource type="Texture2D" uid="uid://b5uij32acdw0i" path="res://Scenes/UI/Shaders/casa_4.png" id="5_4awx7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rehl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ri1mm")
+}],
+"loop": true,
+"name": &"casa1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a88qj")
+}],
+"loop": true,
+"name": &"casa2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xd3f0")
+}],
+"loop": true,
+"name": &"casa3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4awx7")
+}],
+"loop": true,
+"name": &"casa4",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1h3r"]
-size = Vector2(1619.5, 885)
+size = Vector2(3391, 3261)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rehl7"]
-size = Vector2(1689.2, 946.655)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rehl7"]
-shader = ExtResource("3_rehl7")
-shader_parameter/vapor_color = Color(0.4, 1, 0.3, 0.35)
-shader_parameter/wave_strength = 0.05
-shader_parameter/wave_speed = 2.5
-shader_parameter/wave_freq = 8.0
-shader_parameter/vertical_fade = 0.8
-shader_parameter/distortion_strength = 0.02
-shader_parameter/distortion_speed = 1.5
-shader_parameter/particle_density = 30.0
-shader_parameter/particle_speed = 1.0
-shader_parameter/particle_size = 0.03
+size = Vector2(2492, 1397.5)
 
 [node name="House" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_e1h3r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(651.372, 294.509)
-rotation = -0.00670075
-scale = Vector2(12.5455, 7.03677)
+[node name="casa" type="AnimatedSprite2D" parent="."]
+position = Vector2(667, 298)
+sprite_frames = SubResource("SpriteFrames_rehl7")
+animation = &"casa4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, -4)
+position = Vector2(676.5, 143.5)
 shape = SubResource("RectangleShape2D_e1h3r")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -42,7 +67,7 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-7, 6)
+position = Vector2(693, 1216)
 shape = SubResource("RectangleShape2D_rehl7")
 
 [node name="Vida" type="Label" parent="."]
@@ -62,14 +87,5 @@ max_value = 3.0
 
 [node name="Damage_house" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_e1h3r")
-
-[node name="fedor" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_rehl7")
-use_parent_material = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

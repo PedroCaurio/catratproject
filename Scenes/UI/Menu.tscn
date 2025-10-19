@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://qq17v0bnfm5a"]
+[gd_scene load_steps=3 format=3 uid="uid://qq17v0bnfm5a"]
 
 [ext_resource type="Script" uid="uid://faybbda1kyvr" path="res://Scripts/menu.gd" id="1_tij55"]
+[ext_resource type="Texture2D" uid="uid://b5fvo17uxad0w" path="res://Assets/logo preto e branco.png" id="2_353f8"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,6 +12,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tij55")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(634.119, 255.875)
+scale = Vector2(0.488657, 0.488657)
+texture = ExtResource("2_353f8")
+
 [node name="Iniciar" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = -35.5
-offset_right = 181.0
-offset_bottom = 35.5
+offset_left = -186.881
+offset_top = 80.875
+offset_right = 175.119
+offset_bottom = 165.875
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 56
@@ -34,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = 75.0
-offset_right = 185.0
-offset_bottom = 160.0
+offset_left = -182.881
+offset_top = 198.375
+offset_right = 179.119
+offset_bottom = 283.375
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 56

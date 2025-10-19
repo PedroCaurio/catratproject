@@ -13,13 +13,16 @@ config_version=5
 config/name="CatRatProject"
 run/main_scene="uid://wurnlievap65"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://b0651uaa5elpa"
+config/icon="uid://dn853dar70s3s"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
-mouse_cursor/custom_image="uid://dx3jh8pwiadks"
+mouse_cursor/custom_image="uid://dn2awjs073hqq"
 
 [input]
 

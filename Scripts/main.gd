@@ -5,6 +5,8 @@ extends WorldEnvironment
 @onready var camera: Camera2D = $Player/camera
 @onready var spawns: Node2D = $World/Spawns
 @onready var inimigos: Node2D = $World/Inimigos
+@onready var house: House = $World/House
+@onready var fedor_effect: ColorRect = $CanvasLayer/fedor
 
 # 🎵 Sons principais das hordas
 @onready var horde_sounds: Array[AudioStreamPlayer] = [
@@ -27,6 +29,8 @@ var wave_counter: int = 0
 var waves_difficulty: Array = [5, 8, 15] # número de inimigos por horda
 var summoning := false
 
+func _ready() -> void:
+	house.house_hurt.connect(activate_fedor_effect)
 func _process(delta: float) -> void:
 	if wave_counter == waves_difficulty.size():
 		get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
@@ -40,19 +44,9 @@ func new_horde() -> void:
 
 	# Espera antes da próxima horda
 	await get_tree().create_timer(1.5).timeout
-
-	# 🔊 Toca transição se houver (não há no tutorial)
-	if wave_counter < transition_sounds.size():
-		for t in transition_sounds:
-			t.stop()
-		transition_sounds[wave_counter].play()
-		await transition_sounds[wave_counter].finished  # espera a transição acabar
-
-	# 🎵 Toca o som principal da horda
-	if wave_counter < horde_sounds.size():
-		for sound in horde_sounds:
-			sound.stop()
-		horde_sounds[wave_counter].play()
+	
+	music_control()
+	
 
 	# Spawna inimigos
 	var spawn_locs := 1
@@ -69,8 +63,37 @@ func new_horde() -> void:
 
 	wave_counter += 1
 	summoning = false
+func music_control():
+	# 🔊 Toca transição se houver (não há no tutorial)
+	if wave_counter < transition_sounds.size():
+		for t in transition_sounds:
+			t.stop()
+		transition_sounds[wave_counter].play()
+		await transition_sounds[wave_counter].finished  # espera a transição acabar
+
+	# 🎵 Toca o som principal da horda
+	if wave_counter < horde_sounds.size():
+		for sound in horde_sounds:
+			sound.stop()
+		horde_sounds[wave_counter].play()
 
 func shake_cam():
 	print("shake shake")
 	camera.start_hitstop(0.1)
+	
+func activate_fedor_effect() -> void:
+	fedor_effect.visible = true
+	print("frfoooor")
+	var duration: float = 0.5
+	await get_tree().create_timer(duration).timeout
+	
+	# 3. Desativa o efeito, tornando o ColorRect invisível novamente
+	fedor_effect.visible = false
+	
+	# DICA: Se o seu shader tiver um parâmetro 'uniform' para o efeito,
+	# você pode ajustar o código para:
+	# fedor_effect.material.set_shader_param("fedor_intensity", 1.0)
+	# ...
+	# fedor_effect.material.set_shader_param("fedor_intensity", 0.0)
+
 	
