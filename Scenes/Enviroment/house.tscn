@@ -42,4 +42,4 @@ offset_right = 87.0
 offset_bottom = -158.0
 metadata/_edit_use_anchors_ = true
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

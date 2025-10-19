@@ -2,7 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 var target_position: Vector2 
-var speed:int =  100
+var speed:int =  800
 var target 
 func _process(delta: float) -> void:
 	if target:

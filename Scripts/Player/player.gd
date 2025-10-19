@@ -47,7 +47,7 @@ func shoot() -> void:
 		
 	current_ammo -= 1
 	print("Munição: ", current_ammo)
-	
+	hide_aim()
 	projectile_instance = projectile_scene.instantiate()
 	projectile_instance.player = self
 	var direction = Vector2.RIGHT.rotated(muzzle.global_rotation)
@@ -63,7 +63,12 @@ func shoot() -> void:
 	projectile_instance.velocity = direction * projectile_instance.speed
 
 # Funçoes reativas
+func hide_aim():
+	trajectory_preview.hide()
 
+func show_aim():
+	trajectory_preview.show()
+	
 func _update_trajectory_preview() -> void:
 	# 1. O ponto de início é SEMPRE a posição global do muzzle.
 	var start_point = muzzle.global_position
@@ -77,7 +82,7 @@ func _update_trajectory_preview() -> void:
 	aim_raycast.force_raycast_update()
 	
 	# 4. Determina o ponto final global.
-	var end_point: Vector2a
+	var end_point: Vector2
 	if aim_raycast.is_colliding():
 		end_point = aim_raycast.get_collision_point()
 	else:
@@ -102,6 +107,7 @@ func _on_collector_area_entered(area: Area2D) -> void:
 			
 			# Incrementa a munição, garantindo que não ultrapasse o máximo.
 			current_ammo = min(current_ammo + 1, max_ammo)
+			show_aim()
 			print("Munição recuperada! Total: ", current_ammo)
 
 
