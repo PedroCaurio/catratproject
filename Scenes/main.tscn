@@ -111,8 +111,6 @@ shape = SubResource("RectangleShape2D_hptm8")
 position = Vector2(3308, 3521)
 shape = SubResource("RectangleShape2D_hptm8")
 
-[node name="Inimigos" type="Node2D" parent="World"]
-
 [node name="Upgrades" type="Node2D" parent="World"]
 
 [node name="Spawns" type="Node2D" parent="World"]
@@ -135,6 +133,8 @@ position = Vector2(-4874, -1634)
 
 [node name="Tunel" parent="World/House" instance=ExtResource("8_fevyy")]
 position = Vector2(-774, 7722)
+
+[node name="Inimigos" type="Node2D" parent="World"]
 
 [node name="Casa_points" type="Node2D" parent="World"]
 position = Vector2(-3794, -5873)
