@@ -5,12 +5,12 @@ extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: Node = $StateMachine
 @onready var state: Label = $State
-@export var speed := 2000.0
+@export var speed := 4000.0
 @export var max_ammo := 1  
 @export var projectile_scene: PackedScene
 @export var spawn_offset:= 600.0
-@export var preview_max_range := 2000.0 # O alcance máximo da pré-visualização.
-@export var current_recall: = 0
+@export var preview_max_range := 1000.0 # O alcance máximo da pré-visualização.
+@export var current_recall: = true
 var current_ammo: int
 var projectile_instance: CharacterBody2D = null
 @onready var muzzle := $ShootPoint
@@ -19,7 +19,7 @@ var projectile_instance: CharacterBody2D = null
 @onready var trajectory_preview: Line2D = $TrajectoryPreview 
 @onready var aim_raycast: RayCast2D = $AimRayCast           
 @onready var bola: AnimatedSprite2D = $bola
-
+signal shooted
 # --- STATE MACHINE FUNCTIONS ---
 func _ready() -> void:
 	state_machine.init(self)
@@ -27,9 +27,11 @@ func _ready() -> void:
 
 	
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("recall_projectile") and projectile_instance and current_recall > 0:
+	if Input.is_action_just_pressed("recall_projectile") and projectile_instance and current_recall:
 		current_ammo -= 1
 		projectile_instance.recall_projectile()
+		current_recall = false
+		shooted.emit()
 	state_machine.process_input(event)
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -48,9 +50,10 @@ func shoot() -> void:
 	if current_ammo <= 0 or not projectile_scene:
 		# Opcional: tocar um som de "sem munição".
 		return
-		
+	
 	current_ammo -= 1
 	hide_aim()
+	
 	projectile_instance = projectile_scene.instantiate()
 	projectile_instance.player = self
 	var direction = Vector2.RIGHT.rotated(muzzle.global_rotation)
@@ -99,11 +102,10 @@ func _update_trajectory_preview() -> void:
 	trajectory_preview.add_point(trajectory_preview.to_local(start_point))
 	trajectory_preview.add_point(trajectory_preview.to_local(end_point))
 
+func give_recall():
+	current_recall = true
 
 func _on_collector_area_entered(area: Area2D) -> void:
-	if area is Collectable:
-		current_recall += 1
-		area.queue_free()
 	# Verifica se a área que entrou pertence a um projétil coletável.
 	if area.get_parent().is_in_group("collectible"):
 		# A área é filha do projétil, então chamamos a função no pai.

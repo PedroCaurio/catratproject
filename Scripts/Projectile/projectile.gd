@@ -10,7 +10,7 @@ enum State_enum { MOVING, IDLE, RETURNING }
 @export var bounce_friction_factor: float = 0.9
 @export var min_speed_to_stop: float = 30.0
 @export var return_speed: float = 5000.0 ## NOVO: Velocidade específica para o retorno.
-@export var speed: float = 3500.0
+@export var speed: float = 5000.0
 # --- REFERÊNCIAS E VARIÁVEIS ---ds da
 @onready var collectible_area: Area2D = $Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,6 +18,7 @@ enum State_enum { MOVING, IDLE, RETURNING }
 @onready var recall: AudioStreamPlayer = $Recall
 @onready var bush_collision: AudioStreamPlayer = $BushCollision
 @onready var rock_collision: AudioStreamPlayer = $RockCollision
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var _current_state: State_enum = State_enum.MOVING
 var player: Player ## NOVO: Referência para o jogador que atirou.
@@ -84,6 +85,7 @@ func boost_projectile(force_vector: Vector2) -> void:
 		
 ## NOVO: Função pública para o jogador chamar e iniciar o retorno.
 func recall_projectile() -> void:
+	collision_shape_2d.disabled = true
 	# Só pode ser chamado se estiver em movimento ou parado.
 	if _current_state == State_enum.MOVING or _current_state == State_enum.IDLE:
 		

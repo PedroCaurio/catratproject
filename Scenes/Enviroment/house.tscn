@@ -11,7 +11,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ri1mm")
+"texture": ExtResource("5_4awx7")
 }],
 "loop": true,
 "name": &"0",
@@ -19,7 +19,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_a88qj")
+"texture": ExtResource("4_xd3f0")
 }],
 "loop": true,
 "name": &"1",
@@ -27,7 +27,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_xd3f0")
+"texture": ExtResource("3_a88qj")
 }],
 "loop": true,
 "name": &"2",
@@ -35,7 +35,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_4awx7")
+"texture": ExtResource("2_ri1mm")
 }],
 "loop": true,
 "name": &"3",
@@ -123,7 +123,7 @@ _data = {
 }
 
 [node name="House" type="StaticBody2D"]
-collision_layer = 16
+collision_layer = 17
 collision_mask = 0
 script = ExtResource("1_e1h3r")
 
@@ -131,12 +131,12 @@ script = ExtResource("1_e1h3r")
 modulate = Color(0.984314, 1, 1, 1)
 position = Vector2(667, 298)
 sprite_frames = SubResource("SpriteFrames_rehl7")
-animation = &"1"
-autoplay = "0"
+animation = &"3"
+autoplay = "3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(743, 76.5)
+scale = Vector2(1.02548, 1.04448)
 shape = SubResource("RectangleShape2D_e1h3r")
 
 [node name="Vida" type="Label" parent="."]
