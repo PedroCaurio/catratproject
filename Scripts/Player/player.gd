@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var max_ammo := 1  
 @export var projectile_scene: PackedScene
 @export var spawn_offset:= 600.0
-@export var preview_max_range := 2000.0 # O alcance máximo da pré-visualização.
+@export var preview_max_range := 1000.0 # O alcance máximo da pré-visualização.
 @export var current_recall: = 0
 var current_ammo: int
 var projectile_instance: CharacterBody2D = null

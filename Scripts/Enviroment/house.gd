@@ -20,7 +20,7 @@ func take_damage(body: Node2D) -> void:
 	house_hurt.emit()
 	damage_audio()
 	hp -= 1
-	$AnimationPlayer.play("danao")
+	$AnimationPlayer.play("dano")
 	casa.play(str(hp))
 	await get_tree().create_timer(0.8).timeout
 	
