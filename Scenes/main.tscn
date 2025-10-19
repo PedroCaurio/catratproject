@@ -84,28 +84,46 @@ position = Vector2(-121.913, -364.586)
 scale = Vector2(3.35998, 1.14585)
 
 [node name="enemy_spawn" type="Marker2D" parent="World/Spawns"]
-position = Vector2(156.017, -133.981)
+position = Vector2(-63.5987, -1139.98)
 
 [node name="enemy_spawn2" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-220.173, 1398.97)
+position = Vector2(-645.436, 2392.99)
 
 [node name="enemy_spawn3" type="Marker2D" parent="World/Spawns"]
-position = Vector2(44.8284, 1392.01)
+position = Vector2(-4.08156, 2622.65)
 
 [node name="enemy_spawn4" type="Marker2D" parent="World/Spawns"]
-position = Vector2(-253.987, -107.031)
+position = Vector2(-511.872, -442.81)
 
 [node name="House" parent="World" instance=ExtResource("2_bo1nx")]
 position = Vector2(1056.93, 300.585)
 scale = Vector2(1.9602, 2.77074)
 
+[node name="Casa_points" type="Node2D" parent="World"]
+
+[node name="Casa" type="Marker2D" parent="World/Casa_points"]
+position = Vector2(815.86, 588.064)
+scale = Vector2(1, 0.520825)
+
+[node name="Casa2" type="Marker2D" parent="World/Casa_points"]
+position = Vector2(663.878, 512.014)
+scale = Vector2(1, 0.520825)
+
+[node name="Casa3" type="Marker2D" parent="World/Casa_points"]
+position = Vector2(619.928, 303.681)
+scale = Vector2(1, 0.520825)
+
+[node name="Casa4" type="Marker2D" parent="World/Casa_points"]
+position = Vector2(665.983, 73.4792)
+scale = Vector2(1, 0.520825)
+
+[node name="Casa5" type="Marker2D" parent="World/Casa_points"]
+position = Vector2(824.995, 22.9694)
+scale = Vector2(1, 0.520825)
+
 [node name="Player" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(373, 517)
 rotation = 0.088081
-
-[node name="Casa" type="Marker2D" parent="."]
-position = Vector2(568, -400)
-rotation = -1.57092
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(577, 324)

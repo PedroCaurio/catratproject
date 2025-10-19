@@ -7,7 +7,7 @@
 size = Vector2(268.5, 269)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rehl7"]
-size = Vector2(83, 362.766)
+size = Vector2(328.397, 327.309)
 
 [node name="House" type="StaticBody2D"]
 rotation = 1.57433
@@ -31,8 +31,9 @@ collision_layer = 16
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0.483441, 136.893)
+position = Vector2(3.17437, 5.87052)
 rotation = 1.56572
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rehl7")
 
 [node name="Vida" type="Label" parent="."]
