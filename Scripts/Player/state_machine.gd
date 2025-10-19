@@ -35,6 +35,7 @@ func process_frame(delta: float) -> void:
 		change_state(new_state)
 		
 func take_damage() -> void:
+	return
 	if not taking_damage:
 		taking_damage = true
 		change_state(hurt)

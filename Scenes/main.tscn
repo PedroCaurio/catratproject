@@ -1,26 +1,36 @@
-[gd_scene load_steps=31 format=3 uid="uid://wurnlievap65"]
+[gd_scene load_steps=42 format=3 uid="uid://wurnlievap65"]
 
 [ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://dyqcluqak82gw" path="res://Assets/Enviroment/backmoita.png" id="2_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
-[ext_resource type="Texture2D" uid="uid://bhgh33v1ggpk0" path="res://Assets/casa3.png" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ddywb4q21bl8q" path="res://Scenes/Player/player.tscn" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://d3qkwq1wd3ij3" path="res://Assets/props/moita1.png" id="3_b3802"]
-[ext_resource type="PackedScene" uid="uid://dj5p6t6h8a41k" path="res://Scenes/Enviroment/map_object.tscn" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bhe8tsvk4sra4" path="res://Assets/props/moita2.png" id="4_fevyy"]
 [ext_resource type="Script" uid="uid://da0p4ntmhqque" path="res://Scenes/camera.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://chp32ni3rs2at" path="res://Assets/Enviroment/moita7.png" id="5_7k868"]
 [ext_resource type="Texture2D" uid="uid://c2wbyj8vaasku" path="res://Assets/props/moita3.png" id="5_hibaj"]
 [ext_resource type="Texture2D" uid="uid://bow8vsl3dptd0" path="res://Assets/props/moita4.png" id="6_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://l4yfnhoao1x" path="res://Assets/Audios In Game/1 - Batida.wav" id="7_6bp64"]
 [ext_resource type="AudioStream" uid="uid://cuvqpj8jbua1a" path="res://Assets/Audios In Game/2 - Transicao.wav" id="7_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://c12mkgds7rao8" path="res://Assets/Enviroment/moita6.png" id="7_hpc6h"]
 [ext_resource type="AudioStream" uid="uid://ddpr41rps6ynp" path="res://Assets/Audios In Game/4 - Transicao Metade.wav" id="8_6iyac"]
 [ext_resource type="AudioStream" uid="uid://dosldltqnfvqb" path="res://Assets/Audios In Game/3 - Tensao Baixa.wav" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://cdpfs5j8lhua5" path="res://Scenes/Enviroment/tunel.tscn" id="8_fevyy"]
+[ext_resource type="Texture2D" uid="uid://ctw0yo70r3nof" path="res://Assets/Enviroment/moita5.png" id="8_kltya"]
+[ext_resource type="Texture2D" uid="uid://xk2eqyekhbot" path="res://Assets/Enviroment/moita4.png" id="9_e08e2"]
 [ext_resource type="AudioStream" uid="uid://0rdpy5tgcmwh" path="res://Assets/Audios In Game/6 - Transicao 130bpm.wav" id="9_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://xncxhqa1lubi" path="res://Scenes/Enviroment/bush.tscn" id="9_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://bvuyo4wo5b8q4" path="res://Assets/Audios In Game/5 - Tensao Media.wav" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://bgcof1lym2dha" path="res://Scenes/Enviroment/tree_purple.tscn" id="10_ee4r6"]
 [ext_resource type="AudioStream" uid="uid://di427k12lcp6r" path="res://Assets/Audios In Game/7 - Tensao Alta.wav" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://c0wue7vejno" path="res://Assets/Enviroment/moita3.png" id="10_neg2b"]
+[ext_resource type="Texture2D" uid="uid://c4olgrs0lqq1l" path="res://Assets/Enviroment/cerca do lado.png" id="12_r33sp"]
+[ext_resource type="Texture2D" uid="uid://fwb6oxcx28kc" path="res://Assets/Enviroment/cerca frente.png" id="13_hdf80"]
 [ext_resource type="Shader" uid="uid://r5efmvgbljbb" path="res://Scenes/UI/Shaders/fedor.gdshader" id="14_jkdf5"]
 [ext_resource type="AudioStream" uid="uid://bj7rex7why5px" path="res://Assets/Audios In Game/RatsBigWave.wav" id="17_pdsj5"]
 [ext_resource type="AudioStream" uid="uid://crxdrigjsawo0" path="res://Assets/Audios In Game/RoundConclusion.wav" id="18_ee4r6"]
+[ext_resource type="Texture2D" uid="uid://25r5bwkupxih" path="res://Assets/Enviroment/moita1.png" id="29_hpc6h"]
+[ext_resource type="Texture2D" uid="uid://lwbhw4evsghn" path="res://Assets/Enviroment/moita2.png" id="30_kltya"]
 
 [sub_resource type="Environment" id="Environment_0xm2m"]
 
@@ -28,7 +38,7 @@
 size = Vector2(2689.73, 292.434)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bp64"]
-size = Vector2(4162.62, 219)
+size = Vector2(4162.62, 586.272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_344ge"]
 size = Vector2(4888.46, 496.994)
@@ -37,7 +47,11 @@ size = Vector2(4888.46, 496.994)
 size = Vector2(547.891, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hptm8"]
-size = Vector2(160.75, 7850.5)
+size = Vector2(160.75, 8019.52)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpc6h"]
+radius = 260.317
+height = 6690.0
 
 [sub_resource type="Curve" id="Curve_8gbba"]
 _limits = [0.0, 296.59, 0.0, 1.0]
@@ -55,11 +69,47 @@ environment = SubResource("Environment_0xm2m")
 script = ExtResource("1_jjgbg")
 
 [node name="World" type="Node2D" parent="."]
+z_index = -1
 position = Vector2(3950, 194)
 
 [node name="Casa3" type="Sprite2D" parent="World"]
 position = Vector2(-3840, -107)
-texture = ExtResource("2_kry3j")
+scale = Vector2(1.00262, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="World/Casa3"]
+offset_left = -15088.0
+offset_top = -11813.0
+offset_right = 15859.0
+offset_bottom = -2552.0
+color = Color(0.0685866, 0.0414916, 0.203842, 1)
+
+[node name="ColorRect" type="ColorRect" parent="World/Casa3"]
+offset_left = -15088.0
+offset_top = -2592.0
+offset_right = 15857.0
+offset_bottom = 9524.0
+color = Color(0.160784, 0.133333, 0.384314, 1)
+
+[node name="Backmoita2" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-578.482, -3026)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita3" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4225.91, -2954)
+rotation = 0.110688
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita4" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-7683.84, -1584)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita5" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(5836.69, -1469)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-5238.26, -2896)
+texture = ExtResource("2_6vcvc")
 
 [node name="Moita1" type="Sprite2D" parent="World/Casa3"]
 position = Vector2(2173, -1051)
@@ -70,46 +120,198 @@ position = Vector2(-2648, -1127)
 rotation = -0.164477
 texture = ExtResource("4_fevyy")
 
-[node name="Moita3" type="Sprite2D" parent="World/Casa3"]
-position = Vector2(3654, -305)
-rotation = 0.115128
-texture = ExtResource("5_hibaj")
+[node name="Moita10" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(2026.68, -2340)
+texture = ExtResource("5_7k868")
 
 [node name="Moita4" type="Sprite2D" parent="World/Casa3"]
-position = Vector2(-4233, -304)
+position = Vector2(-3744.18, -2208)
 texture = ExtResource("6_pdsj5")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Casa3"]
+[node name="Moita7" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-3428.01, -1229)
+texture = ExtResource("5_7k868")
+
+[node name="Moita6" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-5669.13, -1799)
+texture = ExtResource("7_hpc6h")
+
+[node name="Moita11" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-5730.97, -513)
+texture = ExtResource("7_hpc6h")
+
+[node name="Moita5" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4024.44, -1629)
+texture = ExtResource("8_kltya")
+
+[node name="Moita13" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-4461.3, -2383)
+texture = ExtResource("9_e08e2")
+
+[node name="Moita14" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-2173.3, -2304)
+texture = ExtResource("10_neg2b")
+
+[node name="Moita3" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(3050, -853)
+rotation = 0.115128
+scale = Vector2(1, 1)
+texture = ExtResource("5_hibaj")
+
+[node name="Moita15" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(5301.09, -754)
+texture = ExtResource("9_e08e2")
+
+[node name="Moita12" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4132.16, -772)
+texture = ExtResource("8_kltya")
+
+[node name="CercaDoLado" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(3232.52, 2373)
+rotation = 0.0799277
+texture = ExtResource("12_r33sp")
+
+[node name="CercaDoLado2" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-3334.25, 2278)
+rotation = -0.116549
+texture = ExtResource("12_r33sp")
+flip_h = true
+
+[node name="CercaFrente" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-4809.38, -487)
+texture = ExtResource("13_hdf80")
+
+[node name="CercaFrente2" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4245.86, -372)
+texture = ExtResource("13_hdf80")
+flip_h = true
+
+[node name="CercaDoLado3" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(3806.02, 8597)
+rotation = 0.0990323
+texture = ExtResource("12_r33sp")
+
+[node name="CercaDoLado4" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-3771.11, 8410)
+rotation = -0.11374
+texture = ExtResource("12_r33sp")
+flip_h = true
+
+[node name="Moita8" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-9247.74, 6070)
+texture = ExtResource("8_kltya")
+
+[node name="Moita16" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-7290.87, 2299)
+texture = ExtResource("7_hpc6h")
+
+[node name="Moita17" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-4553.06, 2107)
+texture = ExtResource("8_kltya")
+
+[node name="Moita18" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-5605.29, 3566)
+texture = ExtResource("7_hpc6h")
+
+[node name="Moita19" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(7795.55, 2453)
+texture = ExtResource("5_7k868")
+
+[node name="Moita9" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(5199.36, 1675)
+texture = ExtResource("5_7k868")
+flip_h = true
+
+[node name="Moita20" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-5394.85, 4411)
+texture = ExtResource("30_kltya")
+
+[node name="Moita21" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-8515.66, 3662)
+texture = ExtResource("30_kltya")
+
+[node name="Moita23" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4502.19, 822)
+texture = ExtResource("10_neg2b")
+
+[node name="Moita24" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-9280.65, 1801)
+texture = ExtResource("10_neg2b")
+
+[node name="Moita22" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(5421.78, 2665)
+texture = ExtResource("30_kltya")
+
+[node name="Moita25" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(6148.87, 3758)
+texture = ExtResource("9_e08e2")
+
+[node name="Moita26" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(5880.57, 5544)
+texture = ExtResource("30_kltya")
+
+[node name="Moita27" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-6619.63, 5543)
+texture = ExtResource("30_kltya")
+
+[node name="Moita28" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(-4801.4, 6023)
+texture = ExtResource("9_e08e2")
+
+[node name="Moita29" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(4866.23, 4008)
+texture = ExtResource("9_e08e2")
+
+[node name="Moita30" type="Sprite2D" parent="World/Casa3"]
+position = Vector2(7470.4, 6081)
+texture = ExtResource("30_kltya")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(-3840, -107)
+scale = Vector2(1.00262, 1)
 collision_layer = 128
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
 position = Vector2(-252.001, -767)
 rotation = 0.00757757
 shape = SubResource("RectangleShape2D_21xkr")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-3671.9, -424.276)
-rotation = -0.162595
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-3701.63, -605.49)
+rotation = -0.0167883
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6bp64")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(3419.25, -134.664)
-rotation = 0.297987
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(3288.37, -445)
 shape = SubResource("RectangleShape2D_344ge")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-104, 7459)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-151.602, 7586)
 scale = Vector2(20.6, 10.64)
 shape = SubResource("RectangleShape2D_ynf5e")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(-3340.38, 3422.75)
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-3611.53, 3400)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hptm8")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="World/Casa3/StaticBody2D"]
-position = Vector2(3308, 3521)
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(3621.5, 3523)
 shape = SubResource("RectangleShape2D_hptm8")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-3584.6, 330)
+shape = SubResource("CapsuleShape2D_hpc6h")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(3594.57, 401)
+shape = SubResource("CapsuleShape2D_hpc6h")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(3496.83, -1717)
+shape = SubResource("CapsuleShape2D_hpc6h")
 
 [node name="Upgrades" type="Node2D" parent="World"]
 
@@ -134,8 +336,6 @@ position = Vector2(-4874, -1634)
 [node name="Tunel" parent="World/House" instance=ExtResource("8_fevyy")]
 position = Vector2(-774, 7722)
 
-[node name="Inimigos" type="Node2D" parent="World"]
-
 [node name="Casa_points" type="Node2D" parent="World"]
 position = Vector2(-3794, -5873)
 
@@ -151,11 +351,9 @@ scale = Vector2(1, 0.520825)
 position = Vector2(-1264, 5724)
 scale = Vector2(1, 0.520825)
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Inimigos" type="Node2D" parent="."]
+z_index = -1
 position = Vector2(3950, 194)
-
-[node name="MapObject" parent="Objects" instance=ExtResource("4_21xkr")]
-position = Vector2(-6835, 1386)
 
 [node name="Iluminações" type="Node2D" parent="."]
 
@@ -231,6 +429,110 @@ script = ExtResource("4_jjvhh")
 [node name="Timer" type="Timer" parent="Player"]
 process_mode = 3
 
+[node name="cooldown_timer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2(3950, 194)
+
+[node name="MapObject2" parent="Objects" instance=ExtResource("9_pdsj5")]
+position = Vector2(-4190, 3073)
+
+[node name="Tree" parent="Objects" instance=ExtResource("10_ee4r6")]
+position = Vector2(-1138, 1571)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 7408)
+scale = Vector2(1.00262, 1)
+
+[node name="CercaFrente" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("13_hdf80")
+
+[node name="Backmoita6" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-8771.99, -7453)
+rotation = -0.0148511
+texture = ExtResource("2_6vcvc")
+
+[node name="Moita31" type="Sprite2D" parent="Sprite2D/Backmoita6"]
+position = Vector2(3584.1, 664.299)
+rotation = 0.0148511
+scale = Vector2(1, 1)
+texture = ExtResource("5_7k868")
+
+[node name="Backmoita7" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(6952.76, -7251)
+rotation = -0.123199
+scale = Vector2(1, 1)
+texture = ExtResource("2_6vcvc")
+
+[node name="Moita8" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(5006.86, -7348)
+texture = ExtResource("5_7k868")
+
+[node name="CercaFrente2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(7237.01, -85.9995)
+texture = ExtResource("13_hdf80")
+
+[node name="CercaFrente3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-7198.12, 106)
+texture = ExtResource("13_hdf80")
+
+[node name="Moita1" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-6989.66, 924)
+texture = ExtResource("29_hpc6h")
+
+[node name="Moita2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-4588.96, 628)
+texture = ExtResource("30_kltya")
+
+[node name="Moita3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-2167.31, 818)
+texture = ExtResource("10_neg2b")
+
+[node name="Moita4" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(43.8848, 755)
+texture = ExtResource("29_hpc6h")
+
+[node name="Moita5" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(2571.25, 818)
+texture = ExtResource("8_kltya")
+
+[node name="Moita6" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-3472.89, 713)
+texture = ExtResource("7_hpc6h")
+
+[node name="Moita10" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(3775.1, 1095)
+texture = ExtResource("9_e08e2")
+
+[node name="Backmoita" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-4420.4, 1557)
+texture = ExtResource("2_6vcvc")
+
+[node name="Moita11" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(5564.4, 1179)
+texture = ExtResource("30_kltya")
+
+[node name="Moita9" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-7435.49, -5902)
+texture = ExtResource("10_neg2b")
+
+[node name="Backmoita2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(506.671, 1727)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-2188.49, 2572)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita4" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-7516.51, 2297)
+texture = ExtResource("2_6vcvc")
+
+[node name="Backmoita5" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(3981.33, 2149)
+texture = ExtResource("2_6vcvc")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="fedor" type="ColorRect" parent="CanvasLayer"]
@@ -244,7 +546,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.121569)
 
+[node name="cooldown_bar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 4.0
+grow_vertical = 0
+
 [node name="Tunel" parent="." instance=ExtResource("8_fevyy")]
 position = Vector2(1549, 4640)
 
 [connection signal="timeout" from="Player/Timer" to="Player/camera" method="_on_timer_timeout"]
+[connection signal="timeout" from="Player/cooldown_timer" to="." method="_on_cooldown_timer_timeout"]

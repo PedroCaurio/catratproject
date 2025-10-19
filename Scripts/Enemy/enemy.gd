@@ -54,10 +54,7 @@ func attack_and_die(collision_info):
 func take_damage(body: Node2D) -> void:
 	if is_dead:
 		return
-	if randf() < 0.3:
-		var moeda_mt_foda = COLLECTABLE.instantiate()
-		get_parent().add_child(moeda_mt_foda)
-		moeda_mt_foda.global_position = global_position
+	
 	if body.is_in_group("projectile"):
 		is_dead = true                     # <- impede o _process de rodar
 		velocity = Vector2.ZERO            # <- para o movimento imediatamente

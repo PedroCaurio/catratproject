@@ -1,14 +1,18 @@
 class_name Main
 extends WorldEnvironment
-
+@export var cooldown: float = 5.0
 @onready var casa_points: Node2D = $World/Casa_points
 @onready var camera: Camera2D = $Player/camera
 @onready var spawns: Node2D = $World/Spawns
-@onready var inimigos: Node2D = $World/Inimigos
+@onready var inimigos: Node2D = $Inimigos
+@onready var cooldown_bar: ProgressBar = $CanvasLayer/cooldown_bar
+
 @onready var house: House = $World/House
 @onready var fedor_effect: ColorRect = $CanvasLayer/fedor
 @onready var horda_comeco: AudioStreamPlayer = $Hordes_sounds/HordaComeco
 @onready var horda_final: AudioStreamPlayer = $Hordes_sounds/HordaFinal
+@onready var player: Player = $Player
+@onready var cooldown_timer: Timer = $Player/cooldown_timer
 
 # 🎵 Sons principais das hordas
 @onready var horde_sounds: Array[AudioStreamPlayer] = [
@@ -33,7 +37,10 @@ var summoning := false
 
 func _ready() -> void:
 	house.house_hurt.connect(activate_fedor_effect)
+	player.shooted.connect(start_recall_cooldown)
 func _process(delta: float) -> void:
+	#print(cooldown_timer.wait_time, cooldown_timer.time_left,"coold", cooldown_timer.wait_time - cooldown_timer.time_left / cooldown_timer.wait_time)
+	cooldown_bar.value = 100*(cooldown_timer.wait_time - cooldown_timer.time_left) / cooldown_timer.wait_time
 	if wave_counter == waves_difficulty.size() and inimigos.get_child_count() == 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
 		return
@@ -102,3 +109,11 @@ func activate_fedor_effect() -> void:
 	# fedor_effect.material.set_shader_param("fedor_intensity", 0.0)
 
 	
+func start_recall_cooldown():
+	cooldown_timer.wait_time = cooldown
+	print("rodando")
+	cooldown_timer.start()
+
+
+func _on_cooldown_timer_timeout() -> void:
+	player.give_recall()

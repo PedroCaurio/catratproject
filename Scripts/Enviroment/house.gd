@@ -1,6 +1,6 @@
 class_name House
 extends StaticBody2D
-
+var max_hp: int = 3
 var hp: int = 3
 @onready var vida: Label = $Vida
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -24,8 +24,8 @@ func take_damage(body: Node2D) -> void:
 	casa.play(str(hp))
 	await get_tree().create_timer(0.8).timeout
 	
-	#if hp <= 0:
-	#	get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
+	if hp <= 0:
+		get_tree().change_scene_to_file("res://Scenes/UI/GameOver.tscn")
 
 func damage_audio():
 	damage_house.play()

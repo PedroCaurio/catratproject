@@ -1,41 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdpfs5j8lhua5"]
+[gd_scene load_steps=4 format=3 uid="uid://cdpfs5j8lhua5"]
 
-[ext_resource type="Texture2D" uid="uid://cnnt5f2gcvds2" path="res://icon.svg" id="1_g1j6r"]
+[ext_resource type="Texture2D" uid="uid://drsjkhkghlvwr" path="res://Assets/Enviroment/tronco.png" id="1_g1j6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_327pj"]
-size = Vector2(1360, 1587)
+size = Vector2(741.841, 1427.77)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1j6r"]
 radius = 35.5
-height = 1269.96
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_327pj"]
-radius = 47.0
-height = 1297.11
+height = 806.759
 
 [node name="Tunel" type="Node2D"]
+rotation = 0.706858
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.00003, 49.5)
+texture = ExtResource("1_g1j6r")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(7, 47.5)
+position = Vector2(53, 41)
+rotation = -0.674096
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_327pj")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.751486, 0.376262, 3.85046e-07, 1)
-position = Vector2(3.00003, 49.5)
-scale = Vector2(10.5117, 12.3359)
-texture = ExtResource("1_g1j6r")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-609.5, 41.5)
+position = Vector2(-268.821, 270.363)
+rotation = -0.66793
 scale = Vector2(1, 1.03546)
 shape = SubResource("CapsuleShape2D_g1j6r")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(619, 42)
-scale = Vector2(1.01251, 1.00685)
-shape = SubResource("CapsuleShape2D_327pj")
+disabled = true

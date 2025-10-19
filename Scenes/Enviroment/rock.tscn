@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://mvmxelq0flp4"]
+
+[ext_resource type="Script" uid="uid://cgf2fmjp21fka" path="res://Scripts/Enviroment/map_object.gd" id="1_cfyoe"]
+[ext_resource type="Texture2D" uid="uid://5tcue0r3nf56" path="res://Assets/Enviroment/pedra.png" id="2_cfyoe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_moh11"]
+radius = 3086.06
+height = 7343.91
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4826"]
+size = Vector2(264.5, 127.5)
+
+[node name="Rock" type="StaticBody2D"]
+script = ExtResource("1_cfyoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-176, 114)
+rotation = 1.56601
+shape = SubResource("CapsuleShape2D_moh11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(204, 96)
+scale = Vector2(5.5, 4.95703)
+texture = ExtResource("2_cfyoe")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(60.75, 226.25)
+shape = SubResource("RectangleShape2D_x4826")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

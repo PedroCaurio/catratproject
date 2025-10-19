@@ -154,7 +154,7 @@ polygon = PackedVector2Array(-188.342, -135.371, -155.971, 67.6854, -163.328, 86
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 130
-collision_mask = 181
+collision_mask = 177
 script = ExtResource("1_jlvik")
 projectile_scene = ExtResource("2_74mp2")
 
