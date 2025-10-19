@@ -14,6 +14,10 @@ enum State_enum { MOVING, IDLE, RETURNING }
 # --- REFERÊNCIAS E VARIÁVEIS ---ds da
 @onready var collectible_area: Area2D = $Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var throw: AudioStreamPlayer = $Throw
+@onready var recall: AudioStreamPlayer = $Recall
+@onready var bush_collision: AudioStreamPlayer = $BushCollision
+@onready var rock_collision: AudioStreamPlayer = $RockCollision
 
 var _current_state: State_enum = State_enum.MOVING
 var player: Player ## NOVO: Referência para o jogador que atirou.
@@ -21,7 +25,7 @@ var player: Player ## NOVO: Referência para o jogador que atirou.
 func _ready() -> void:
 	add_to_group("collectible")
 	collectible_area.monitoring = false
-
+	throw.play()
 	
 
 ## NOVO: Função de inicialização para passar a referência do jogador.
@@ -68,6 +72,8 @@ func _process_movement_and_collision(delta: float) -> void:
 	if collision_info:
 		if collision_info.get_collider() is Enemy:
 			collision_info.get_collider().take_damage(self)
+		else:
+			bush_collision.play()
 		velocity = velocity.bounce(collision_info.get_normal())
 		velocity *= bounce_friction_factor
 
@@ -80,6 +86,8 @@ func boost_projectile(force_vector: Vector2) -> void:
 func recall_projectile() -> void:
 	# Só pode ser chamado se estiver em movimento ou parado.
 	if _current_state == State_enum.MOVING or _current_state == State_enum.IDLE:
+		
+		recall.play()
 		_current_state = State_enum.RETURNING
 		# Garante que ele não possa ser coletado enquanto retorna.
 		collectible_area.monitoring = false
@@ -95,3 +103,8 @@ func _change_state_to_idle() -> void:
 func collect() -> void:
 	emit_signal("collected")
 	queue_free()
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.take_damage(self)

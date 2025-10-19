@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/HouseDamage.wav-ddeb894d29e51ad14782eb0072a2d
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100

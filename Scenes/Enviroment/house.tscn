@@ -169,8 +169,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_a88qj")
 max_value = 3.0
 show_percentage = false
 
-[node name="Damage_house" type="AudioStreamPlayer2D" parent="."]
+[node name="Damage_house" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_e1h3r")
+volume_db = 20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

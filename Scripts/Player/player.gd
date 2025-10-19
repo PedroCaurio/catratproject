@@ -47,11 +47,9 @@ func shoot() -> void:
 	# Verifica se tem munição e se a cena do projétil está configurada.
 	if current_ammo <= 0 or not projectile_scene:
 		# Opcional: tocar um som de "sem munição".
-		print("Sem munição!")
 		return
 		
 	current_ammo -= 1
-	print("Munição: ", current_ammo)
 	hide_aim()
 	projectile_instance = projectile_scene.instantiate()
 	projectile_instance.player = self
@@ -117,9 +115,7 @@ func _on_collector_area_entered(area: Area2D) -> void:
 			
 			# Incrementa a munição, garantindo que não ultrapasse o máximo.
 			current_ammo = 1
-			print("Municao:", current_ammo)
 			show_aim()
-			print("Munição recuperada! Total: ", current_ammo)
 
 func normal_speed():
 	speed = 2000.0

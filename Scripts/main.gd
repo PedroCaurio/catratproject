@@ -7,6 +7,8 @@ extends WorldEnvironment
 @onready var inimigos: Node2D = $World/Inimigos
 @onready var house: House = $World/House
 @onready var fedor_effect: ColorRect = $CanvasLayer/fedor
+@onready var horda_comeco: AudioStreamPlayer = $Hordes_sounds/HordaComeco
+@onready var horda_final: AudioStreamPlayer = $Hordes_sounds/HordaFinal
 
 # 🎵 Sons principais das hordas
 @onready var horde_sounds: Array[AudioStreamPlayer] = [
@@ -26,18 +28,21 @@ extends WorldEnvironment
 const ENEMY = preload("res://Scenes/Enemy/enemy.tscn")
 
 var wave_counter: int = 0
-var waves_difficulty: Array = [2, 4, 8, 15] # número de inimigos por horda
+var waves_difficulty: Array = [2, 4, 6, 10, 14] # número de inimigos por horda
 var summoning := false
 
 func _ready() -> void:
 	house.house_hurt.connect(activate_fedor_effect)
 func _process(delta: float) -> void:
-	print("Wave atual", wave_counter)
 	if wave_counter == waves_difficulty.size() and inimigos.get_child_count() == 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
 		return
 
 	if inimigos.get_child_count() < 1 and not summoning:
+		if wave_counter != waves_difficulty.size():
+			horda_comeco.play()
+		else:
+			horda_final.play()
 		new_horde()
 
 func new_horde() -> void:
@@ -80,12 +85,10 @@ func music_control():
 		horde_sounds[wave_counter].play()
 
 func shake_cam():
-	print("shake shake")
 	camera.start_hitstop(0.1)
 	
 func activate_fedor_effect() -> void:
 	fedor_effect.visible = true
-	print("frfoooor")
 	var duration: float = 0.5
 	await get_tree().create_timer(duration).timeout
 	

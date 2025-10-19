@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pn63oh6cvoal"
+path="res://.godot/imported/BushRicochet2.wav-71b3f028973da8ab5ee43d4e73e4795d.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Characters/Player-cat/Projectile/ricochet/map entities (rock, grass)/BushRicochet2.wav"
+dest_files=["res://.godot/imported/BushRicochet2.wav-71b3f028973da8ab5ee43d4e73e4795d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

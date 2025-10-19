@@ -23,6 +23,14 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 mouse_cursor/custom_image="uid://dn2awjs073hqq"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "green",
+"res://Scenes/": "red",
+"res://Scripts/": "purple"
+}
+
 [input]
 
 right={

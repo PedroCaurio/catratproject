@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crxdrigjsawo0"
+path="res://.godot/imported/RoundConclusion.wav-364892d9a5b1b4f944635fd71eba1add.sample"
+
+[deps]
+
+source_file="res://Assets/Audios In Game/RoundConclusion.wav"
+dest_files=["res://.godot/imported/RoundConclusion.wav-364892d9a5b1b4f944635fd71eba1add.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
