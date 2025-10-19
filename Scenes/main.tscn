@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wurnlievap65"]
+[gd_scene load_steps=10 format=3 uid="uid://wurnlievap65"]
 
 [ext_resource type="Script" uid="uid://yd30t7hjm7gb" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bib76k5xchi8r" path="res://Scenes/Enviroment/house.tscn" id="2_bo1nx"]
@@ -7,13 +7,21 @@
 [sub_resource type="Environment" id="Environment_0xm2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
-size = Vector2(131, 531.5)
+size = Vector2(131, 1180.49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kry3j"]
-size = Vector2(667.001, 40)
+size = Vector2(2524, 44.9396)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
-size = Vector2(1173, 20)
+size = Vector2(4479.5, 23)
+
+[sub_resource type="Curve" id="Curve_8gbba"]
+_limits = [0.0, 296.59, 0.0, 1.0]
+_data = [Vector2(0.0444444, 0), 0.0, 0.0, 0, 0, Vector2(0.911111, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8gbba"]
+curve = SubResource("Curve_8gbba")
 
 [node name="Main" type="WorldEnvironment"]
 environment = SubResource("Environment_0xm2m")
@@ -26,43 +34,44 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="TextureRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -440.999
-offset_top = -7.05438
-offset_right = 1043.0
-offset_bottom = 356.946
-scale = Vector2(0.443676, 3.20238)
+offset_left = -1356.79
+offset_top = -1684.17
+offset_right = 127.207
+offset_bottom = -1320.17
+scale = Vector2(1.68534, 12.4326)
 color = Color(0.0350018, 0.244818, 2.40654e-08, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(175.933, 546.022)
+position = Vector2(672.932, 588.835)
 shape = SubResource("RectangleShape2D_jjvhh")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-108.998, -15.0134)
+position = Vector2(-114.794, -1675.12)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-115.144, 1167.99)
+position = Vector2(-116.345, 2789.51)
 shape = SubResource("RectangleShape2D_kry3j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(212.929, 572.526)
+position = Vector2(1135.93, 567.39)
 rotation = 1.57092
 shape = SubResource("RectangleShape2D_8gbba")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-440.071, 572.946)
+position = Vector2(-1364.07, 572.831)
 rotation = -1.57109
 shape = SubResource("RectangleShape2D_8gbba")
 
 [node name="World" type="Node2D" parent="."]
 position = Vector2(4, 213)
 rotation = -1.57092
+scale = Vector2(1, 1.92003)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World"]
 
@@ -71,6 +80,8 @@ rotation = -1.57092
 [node name="Upgrades" type="Node2D" parent="World"]
 
 [node name="Spawns" type="Node2D" parent="World"]
+position = Vector2(-121.913, -364.586)
+scale = Vector2(3.35998, 1.14585)
 
 [node name="enemy_spawn" type="Marker2D" parent="World/Spawns"]
 position = Vector2(156.017, -133.981)
@@ -85,14 +96,15 @@ position = Vector2(44.8284, 1392.01)
 position = Vector2(-253.987, -107.031)
 
 [node name="House" parent="World" instance=ExtResource("2_bo1nx")]
-position = Vector2(176.93, 569.022)
+position = Vector2(1056.93, 300.585)
+scale = Vector2(1.9602, 2.77074)
 
 [node name="Player" parent="." instance=ExtResource("3_8gbba")]
 position = Vector2(373, 517)
 rotation = 0.088081
 
 [node name="Casa" type="Marker2D" parent="."]
-position = Vector2(572, 210)
+position = Vector2(568, -400)
 rotation = -1.57092
 
 [node name="camera" type="Camera2D" parent="."]
@@ -102,3 +114,11 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 3.0
+
+[node name="Iluminações" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Iluminações"]
+position = Vector2(1549, -623)
+scale = Vector2(1, 134.5)
+shadow_enabled = true
+texture = SubResource("CurveTexture_8gbba")
