@@ -165,6 +165,16 @@ collision_mask = 181
 script = ExtResource("1_jlvik")
 projectile_scene = ExtResource("2_74mp2")
 
+[node name="TrajectoryPreview" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(1, 1, 1, 0.486275)
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="AimRayCast" type="RayCast2D" parent="."]
+collision_mask = 133
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gxkwu")
 animation = &"idle"
@@ -216,8 +226,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_gk6dx")
 
-[node name="ShootPoint" type="Marker2D" parent="."]
-
 [node name="Collector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 32
@@ -233,6 +241,10 @@ occluder = SubResource("OccluderPolygon2D_7g0yx")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.999338, 0.823746, 0.88451, 1)
+
+[node name="ShootPoint" type="Marker2D" parent="."]
+position = Vector2(0, -2.94284)
+scale = Vector2(19490.2, 209000)
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]

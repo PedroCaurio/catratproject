@@ -11,6 +11,7 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("shoot") and parent.current_ammo >0:
 		print("shooting")
+		
 		return shoot_state
 	return null
 	

@@ -5,8 +5,16 @@ extends State
 @export var hurt_state: State
 @onready var state_machine: StateMachine = $".."
 
+func enter() -> void:
+	if parent.global_position.direction_to(parent.get_global_mouse_position()).x < 0.0:
+		parent.animation.flip_h = false
+	elif parent.global_position.direction_to(parent.get_global_mouse_position()).x > 0.0:
+		parent.animation.flip_h = true
+	super()
 
 func process_input(event: InputEvent) -> State:
+	print(parent.global_position.direction_to(parent.get_global_mouse_position()).x < 0.0)
+	
 	animation_shoot()
 	return null
 	

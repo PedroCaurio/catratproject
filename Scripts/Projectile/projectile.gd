@@ -9,9 +9,9 @@ enum State_enum { MOVING, IDLE, RETURNING }
 @export var linear_drag: float = 80.0
 @export var bounce_friction_factor: float = 0.8
 @export var min_speed_to_stop: float = 30.0
-@export var return_speed: float = 800.0 ## NOVO: Velocidade específica para o retorno.
-@export var speed: float = 500.0
-# --- REFERÊNCIAS E VARIÁVEIS ---
+@export var return_speed: float = 5000.0 ## NOVO: Velocidade específica para o retorno.
+@export var speed: float = 3000.0
+# --- REFERÊNCIAS E VARIÁVEIS ---ds da
 @onready var collectible_area: Area2D = $Area2D
 
 var _current_state: State_enum = State_enum.MOVING
