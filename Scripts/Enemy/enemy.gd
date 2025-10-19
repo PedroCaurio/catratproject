@@ -5,11 +5,13 @@ var target_position: Vector2
 var speed:int = 800
 var target
 var is_dead := false  # <- flag de morte
+var attacking = false
 @onready var sfx_rat_death: AudioStreamPlayer = $sfx_rat_death
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 const COLLECTABLE = preload("res://Scenes/Enviroment/collectable.tscn")
+
 signal enemy_killed
 
 func _process(delta: float) -> void:
@@ -23,15 +25,32 @@ func _process(delta: float) -> void:
 		
 		if distance_to_target > 5.0:
 			var direction = global_position.direction_to(target_position)
-			animated_sprite_2d.play("run")
+			if not attacking:
+				animated_sprite_2d.play("run")
 			velocity = direction * speed
 		else:
 			velocity = Vector2.ZERO
 			animated_sprite_2d.stop()
 			await animated_sprite_2d.animation_finished
 		
-		move_and_slide()
+		var collision_info: KinematicCollision2D = move_and_collide(velocity * delta)
+	
+		if collision_info:
+			
+			if collision_info.get_collider() is House and not attacking:
+				print(collision_info)
 
+				attack_and_die(collision_info)
+				
+				
+			velocity = velocity.bounce(collision_info.get_normal())
+			
+func attack_and_die(collision_info):
+	attacking = true
+	animated_sprite_2d.play("attack_rat")
+	await animated_sprite_2d.animation_finished
+	collision_info.get_collider().take_damage(self)
+	queue_free()
 func take_damage(body: Node2D) -> void:
 	if is_dead:
 		return
@@ -51,8 +70,3 @@ func take_damage(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "death_rat":
 		queue_free()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if animation_player.name == "attack":
-		$AnimatedSprite2D.play("run")

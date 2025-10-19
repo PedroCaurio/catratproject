@@ -14,9 +14,8 @@ func _process(delta: float) -> void:
 	vida.text = str(hp)
 	progress_bar.value = hp if hp > 0 else 0
 
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		body.queue_free()
+func take_damage(body: Node2D) -> void:
+	
 		
 	house_hurt.emit()
 	damage_audio()

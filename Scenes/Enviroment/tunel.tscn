@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdpfs5j8lhua5"]
+[gd_scene load_steps=5 format=3 uid="uid://cdpfs5j8lhua5"]
 
 [ext_resource type="Texture2D" uid="uid://cnnt5f2gcvds2" path="res://icon.svg" id="1_g1j6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_327pj"]
 size = Vector2(1360, 1587)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1j6r"]
-size = Vector2(123, 1583)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1j6r"]
+radius = 35.5
+height = 1269.96
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_327pj"]
+radius = 47.0
+height = 1297.11
 
 [node name="Tunel" type="Node2D"]
 
@@ -27,8 +32,10 @@ texture = ExtResource("1_g1j6r")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-609.5, 41.5)
-shape = SubResource("RectangleShape2D_g1j6r")
+scale = Vector2(1, 1.03546)
+shape = SubResource("CapsuleShape2D_g1j6r")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(619, 42)
-shape = SubResource("RectangleShape2D_g1j6r")
+scale = Vector2(1.01251, 1.00685)
+shape = SubResource("CapsuleShape2D_327pj")

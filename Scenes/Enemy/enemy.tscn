@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bbyd4x3b5s4fd" path="res://Assets/Black Units/moderato/morde9.png" id="6_u4wq1"]
 [ext_resource type="AudioStream" uid="uid://c5mh4hlgj46on" path="res://Assets/Audios In Game/Death/RatDeath_1.wav" id="13_1vi6b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t2r4"]
-size = Vector2(503, 438)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_d40jh"]
 animations = [{
 "frames": [{
@@ -35,7 +32,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_u4wq1")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_rat",
 "speed": 5.0
 }, {
@@ -70,6 +67,10 @@ animations = [{
 "name": &"run",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vi6b"]
+radius = 105.108
+height = 469.097
 
 [sub_resource type="Animation" id="Animation_xmc1t"]
 length = 0.001
@@ -109,19 +110,21 @@ _data = {
 }
 
 [node name="Enemy" type="CharacterBody2D"]
+rotation = -0.151924
 collision_layer = 4
 collision_mask = 19
 script = ExtResource("1_mw074")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-44.5, 45)
-shape = SubResource("RectangleShape2D_2t2r4")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.8147e-06, -1.90735e-06)
 sprite_frames = SubResource("SpriteFrames_d40jh")
-animation = &"attack_rat"
-frame = 2
+animation = &"run"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(45.7169, 137.503)
+rotation = 1.50046
+shape = SubResource("CapsuleShape2D_1vi6b")
 
 [node name="sfx_rat_death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_1vi6b")
