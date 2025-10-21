@@ -1,7 +1,7 @@
 extends Control
 
 @onready var menu_ost: AudioStreamPlayer = $menu_ost
-
+const MAIN = preload("res://Scenes/main.tscn")
 func _ready() -> void:
 	menu_ost.play()
 

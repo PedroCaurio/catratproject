@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bib76k5xchi8r"]
 
 [ext_resource type="Script" uid="uid://cdm2o56f8331u" path="res://Scripts/Enviroment/house.gd" id="1_e1h3r"]
-[ext_resource type="AudioStream" uid="uid://oo3grshsjqah" path="res://Assets/Audios In Game/Casa/HouseDamage.wav" id="2_e1h3r"]
 [ext_resource type="Texture2D" uid="uid://ywm5pm2kvjpe" path="res://Scenes/UI/Shaders/casa_1.png" id="2_ri1mm"]
 [ext_resource type="Texture2D" uid="uid://dwwsfwiceqxtk" path="res://Scenes/UI/Shaders/casa_2.png" id="3_a88qj"]
 [ext_resource type="Texture2D" uid="uid://c1ygsridpsbv" path="res://Scenes/UI/Shaders/casa_3.png" id="4_xd3f0"]
 [ext_resource type="Texture2D" uid="uid://b5uij32acdw0i" path="res://Scenes/UI/Shaders/casa_4.png" id="5_4awx7"]
+[ext_resource type="AudioStream" uid="uid://i2hahlngjjma" path="res://Assets/SFX/SFX2/HouseDamage.wav" id="6_ri1mm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rehl7"]
 animations = [{
@@ -157,8 +157,7 @@ max_value = 3.0
 show_percentage = false
 
 [node name="Damage_house" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_e1h3r")
-volume_db = 20.0
+stream = ExtResource("6_ri1mm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

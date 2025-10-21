@@ -1,12 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmfih1x4exhxd"]
+[gd_scene load_steps=11 format=3 uid="uid://cmfih1x4exhxd"]
 
 [ext_resource type="Script" uid="uid://c05r3xtvfanwg" path="res://Scripts/Projectile/projectile.gd" id="1_wggxw"]
 [ext_resource type="Texture2D" uid="uid://dbanikexb2uqr" path="res://Scenes/UI/Shaders/bola3.png" id="3_mqh4e"]
-[ext_resource type="AudioStream" uid="uid://nwqgpx6pj5b0" path="res://Assets/SFX/Characters/Player-cat/Projectile/Throw - swoosh/ThrowBallv2.wav" id="4_1vqmo"]
+[ext_resource type="AudioStream" uid="uid://cbm4wpbcrnmls" path="res://Assets/SFX/SFX2/ThrowBall2.wav" id="4_1vqmo"]
 [ext_resource type="Texture2D" uid="uid://caeg8tmqaima8" path="res://Scenes/UI/Shaders/bola.png" id="4_yyrht"]
-[ext_resource type="AudioStream" uid="uid://j5amordbtphj" path="res://Assets/SFX/Characters/Player-cat/Projectile/ricochet/pullback/PullBack.wav" id="5_j6h31"]
-[ext_resource type="AudioStream" uid="uid://pn63oh6cvoal" path="res://Assets/SFX/Characters/Player-cat/Projectile/ricochet/map entities (rock, grass)/BushRicochet2.wav" id="6_sux4i"]
-[ext_resource type="AudioStream" uid="uid://blgeoyrrpfrca" path="res://Assets/SFX/Characters/Player-cat/Projectile/ricochet/map entities (rock, grass)/RockRicochet2.wav" id="7_ypa64"]
+[ext_resource type="AudioStream" uid="uid://bxorvbvm4u0xm" path="res://Assets/SFX/SFX2/PullBackBall.wav" id="5_1vqmo"]
+[ext_resource type="AudioStream" uid="uid://0tibpx6yfggv" path="res://Assets/SFX/SFX2/ObjectRicouchet.wav" id="6_a6hcx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wggxw"]
 radius = 170.301
@@ -56,19 +55,15 @@ autoplay = "default"
 
 [node name="Throw" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1vqmo")
-volume_db = 7.0
 
 [node name="Recall" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_j6h31")
-volume_db = 10.0
+stream = ExtResource("5_1vqmo")
 
 [node name="BushCollision" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_sux4i")
-volume_db = 7.0
+stream = ExtResource("6_a6hcx")
 
 [node name="RockCollision" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_ypa64")
-volume_db = 7.0
+stream = ExtResource("6_a6hcx")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

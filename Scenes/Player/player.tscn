@@ -256,6 +256,7 @@ position = Vector2(0, -2.94284)
 scale = Vector2(19490.2, 209000)
 
 [node name="Recalls" type="Label" parent="."]
+visible = false
 offset_left = 326.0
 offset_top = -301.0
 offset_right = 366.0

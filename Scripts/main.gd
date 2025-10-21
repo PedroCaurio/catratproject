@@ -5,7 +5,8 @@ extends WorldEnvironment
 @onready var camera: Camera2D = $Player/camera
 @onready var spawns: Node2D = $World/Spawns
 @onready var inimigos: Node2D = $Inimigos
-@onready var cooldown_bar: ProgressBar = $CanvasLayer/cooldown_bar
+@onready var cooldown_bar: ProgressBar = $CanvasLayer/VBoxContainer/cooldown_bar
+@onready var label: Label = $CanvasLayer/VBoxContainer/Label
 
 @onready var house: House = $World/House
 @onready var fedor_effect: ColorRect = $CanvasLayer/fedor
@@ -41,6 +42,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#print(cooldown_timer.wait_time, cooldown_timer.time_left,"coold", cooldown_timer.wait_time - cooldown_timer.time_left / cooldown_timer.wait_time)
 	cooldown_bar.value = 100*(cooldown_timer.wait_time - cooldown_timer.time_left) / cooldown_timer.wait_time
+	
 	if wave_counter == waves_difficulty.size() and inimigos.get_child_count() == 0:
 		get_tree().change_scene_to_file("res://Scenes/UI/Menu.tscn")
 		return
@@ -54,7 +56,7 @@ func _process(delta: float) -> void:
 
 func new_horde() -> void:
 	summoning = true
-
+	
 	# Espera antes da próxima horda
 	await get_tree().create_timer(1.5).timeout
 	
@@ -111,9 +113,10 @@ func activate_fedor_effect() -> void:
 	
 func start_recall_cooldown():
 	cooldown_timer.wait_time = cooldown
-	print("rodando")
+	label.text = ""
 	cooldown_timer.start()
 
 
 func _on_cooldown_timer_timeout() -> void:
 	player.give_recall()
+	label.text = "Pressione o Botão direito para puxar o novelo!"

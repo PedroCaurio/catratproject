@@ -8,22 +8,33 @@ var is_dead := false  # <- flag de morte
 var attacking = false
 @onready var sfx_rat_death: AudioStreamPlayer = $sfx_rat_death
 @onready var animation_player: AnimationPlayer = $AnimationPlayer # Não usado no código, mas mantido
-
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var mat: ShaderMaterial = ShaderMaterial.new()
 # CORREÇÃO: Preloade a cena de explosão (.tscn) e não apenas o script (.gdshader)
 const EXPLOSION_SCENE = preload("res://Scenes/Explosion.tscn") # ASSUMIDO: Você precisa ter uma cena .tscn
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 const COLLECTABLE = preload("res://Scenes/Enviroment/collectable.tscn")
 
 signal enemy_killed
-
+func _ready() -> void:
+	mat.shader = preload("res://Scenes/Explosion.gdshader")
 # O trecho de código abaixo estava fora de uma função e não rodaria corretamente:
 # var e = e_scene.instantiate()
 # get_parent().add_child(e)
 # e.global_position = global_position
 # AudioStreamPlayer.play("") 
 # queue_free()
-
+func explode():
+	var tween = create_tween()
+	tween.tween_property(mat, "shader_parameter/explode_progress", 1.0, 0.6)
+	var s = Sprite2D.new()
+	s.texture = preload("res://Scenes/Explosion.gdshader")
+	s.global_position = animated_sprite_2d.global_position
+	get_parent().add_child(s)
+	animated_sprite_2d.hide()
+	await  get_tree().create_timer(1).timeout
+	tween.finished.connect(func(): queue_free())
 func _process(delta: float) -> void:
 	# Se estiver morto, não faz mais nada
 	if is_dead:
@@ -89,8 +100,8 @@ func take_damage(body: Node2D) -> void:
 		enemy_killed.emit()
 		
 		# ⚠️ CHAME A FUNÇÃO DA EXPLOSÃO AQUI!
-		spawn_explosion()
-		
+		#spawn_explosion()
+		#explode()
 		# Inicia a animação de morte do inimigo. O inimigo será removido
 		# quando a animação terminar (pela função _on_animated_sprite_2d_animation_finished).
 		animated_sprite_2d.play("death_rat")
@@ -101,3 +112,4 @@ func take_damage(body: Node2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "death_rat":
 		queue_free()
+		

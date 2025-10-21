@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=9 format=3 uid="uid://qq17v0bnfm5a"]
+[gd_scene load_steps=10 format=3 uid="uid://qq17v0bnfm5a"]
 
 [ext_resource type="Script" uid="uid://faybbda1kyvr" path="res://Scripts/menu.gd" id="1_tij55"]
 [ext_resource type="Texture2D" uid="uid://b5fvo17uxad0w" path="res://Assets/logo preto e branco.png" id="2_353f8"]
@@ -9,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dxhjfulj5kiov" path="res://Assets/botoes/Quit normal.png" id="6_g37sx"]
 [ext_resource type="Texture2D" uid="uid://ccjf5tl1j87ws" path="res://Assets/botoes/Quit pressed.png" id="7_0oyh4"]
 [ext_resource type="Texture2D" uid="uid://dx7lkfeaoe00g" path="res://Assets/botoes/Quit hover.png" id="8_2kl40"]
-
+[ext_resource type="AudioStream" uid="uid://c262nlqnhlkbx" path="res://Assets/Audios In Game/menu soundtrack (1).wav" id="9_3hayu"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -30,9 +29,7 @@ grow_vertical = 2
 color = Color(0.258824, 0.243137, 0.372549, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-position = Vector2(960, 357)
-
+position = Vector2(825, 333)
 scale = Vector2(0.488657, 0.488657)
 texture = ExtResource("2_353f8")
 
@@ -71,7 +68,7 @@ texture_pressed = ExtResource("7_0oyh4")
 texture_hover = ExtResource("8_2kl40")
 
 [node name="menu_ost" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_6jtbh")
+stream = ExtResource("9_3hayu")
 
 [connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]
